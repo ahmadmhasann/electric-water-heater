@@ -1764,6 +1764,7 @@ u8 eeprom_external_vid_read(u8 address);
 # 10 "eeprom_external.c" 2
 
 void eeprom_external_vid_write(u8 address, u8 data) {
+    i2c_vid_master_init();
     i2c_vid_start();
     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
     i2c_vid_restart();
@@ -1773,6 +1774,7 @@ void eeprom_external_vid_write(u8 address, u8 data) {
     i2c_vid_stop();
 }
 u8 eeprom_external_vid_read(u8 address) {
+    i2c_vid_master_init();
     u8 data;
     i2c_vid_start();
     while(i2c_u8_master_write_slave_address_with_write_req(0x50))

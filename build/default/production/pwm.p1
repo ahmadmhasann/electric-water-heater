@@ -1,31 +1,44 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"17 ./i2c.h
-[; ;./i2c.h: 17: void i2c_vid_master_init(void);
-[v _i2c_vid_master_init `(v ~T0 @X0 0 ef ]
-"18
-[; ;./i2c.h: 18: void i2c_vid_start(void);
-[v _i2c_vid_start `(v ~T0 @X0 0 ef ]
-"20
-[; ;./i2c.h: 20: void i2c_vid_restart(void);
-[v _i2c_vid_restart `(v ~T0 @X0 0 ef ]
-"24
-[; ;./i2c.h: 24: u8 i2c_u8_master_write_slave_address_with_write_req(u8 address);
-[v _i2c_u8_master_write_slave_address_with_write_req `(uc ~T0 @X0 0 ef1`uc ]
-"26
-[; ;./i2c.h: 26: u8 i2c_u8_master_write_byte(u8 data);
-[v _i2c_u8_master_write_byte `(uc ~T0 @X0 0 ef1`uc ]
-"19
-[; ;./i2c.h: 19: void i2c_vid_stop(void);
-[v _i2c_vid_stop `(v ~T0 @X0 0 ef ]
-"25
-[; ;./i2c.h: 25: u8 i2c_u8_master_write_slave_address_with_read_req(u8 address);
-[v _i2c_u8_master_write_slave_address_with_read_req `(uc ~T0 @X0 0 ef1`uc ]
-"27
-[; ;./i2c.h: 27: u8 i2c_u8_master_read_byte(void);
-[v _i2c_u8_master_read_byte `(uc ~T0 @X0 0 ef ]
-"23
-[; ;./i2c.h: 23: void i2c_vid_nack(void);
-[v _i2c_vid_nack `(v ~T0 @X0 0 ef ]
+"2875 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2875: extern volatile __bit T2CKPS1 __attribute__((address(0x91)));
+[v _T2CKPS1 `Vb ~T0 @X0 0 e@145 ]
+"2872
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2872: extern volatile __bit T2CKPS0 __attribute__((address(0x90)));
+[v _T2CKPS0 `Vb ~T0 @X0 0 e@144 ]
+"2449
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2449: extern volatile __bit CCP1M3 __attribute__((address(0xBB)));
+[v _CCP1M3 `Vb ~T0 @X0 0 e@187 ]
+"2446
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2446: extern volatile __bit CCP1M2 __attribute__((address(0xBA)));
+[v _CCP1M2 `Vb ~T0 @X0 0 e@186 ]
+"1816
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 1816: extern volatile unsigned char PR2 __attribute__((address(0x092)));
+[v _PR2 `Vuc ~T0 @X0 0 e@146 ]
+"35 ./dio.h
+[; ;./dio.h: 35: void dio_vid_set_pin_direction (u8 portNumber, u8 index, u8 direction);
+[v _dio_vid_set_pin_direction `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"27 pwm.c
+[; ;pwm.c: 27:             dio_vid_set_pin_direction(C, 2, 0x00);
+[c E860 0 1 2 3 4 .. ]
+[n E860 . A B C D E  ]
+"2473 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2473: extern volatile __bit CCP2M3 __attribute__((address(0xEB)));
+[v _CCP2M3 `Vb ~T0 @X0 0 e@235 ]
+"2470
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2470: extern volatile __bit CCP2M2 __attribute__((address(0xEA)));
+[v _CCP2M2 `Vb ~T0 @X0 0 e@234 ]
+"2902
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2902: extern volatile __bit TMR2ON __attribute__((address(0x92)));
+[v _TMR2ON `Vb ~T0 @X0 0 e@146 ]
+"2452
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2452: extern volatile __bit CCP1X __attribute__((address(0xBD)));
+[v _CCP1X `Vb ~T0 @X0 0 e@189 ]
+"2455
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2455: extern volatile __bit CCP1Y __attribute__((address(0xBC)));
+[v _CCP1Y `Vb ~T0 @X0 0 e@188 ]
+"892
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 892: extern volatile unsigned char CCPR1L __attribute__((address(0x015)));
+[v _CCPR1L `Vuc ~T0 @X0 0 e@21 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -206,102 +219,157 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"11 eeprom_external.c
-[; ;eeprom_external.c: 11: void eeprom_external_vid_write(u8 address, u8 data) {
-[v _eeprom_external_vid_write `(v ~T0 @X0 1 ef2`uc`uc ]
+"13 pwm.c
+[; ;pwm.c: 13: void pwm_vid_init(u8 channel, u16 frequency) {
+[v _pwm_vid_init `(v ~T0 @X0 1 ef2`uc`us ]
 {
-[e :U _eeprom_external_vid_write ]
-[v _address `uc ~T0 @X0 1 r1 ]
-[v _data `uc ~T0 @X0 1 r2 ]
+[e :U _pwm_vid_init ]
+[v _channel `uc ~T0 @X0 1 r1 ]
+[v _frequency `us ~T0 @X0 1 r2 ]
 [f ]
-"12
-[; ;eeprom_external.c: 12:     i2c_vid_master_init();
-[e ( _i2c_vid_master_init ..  ]
-"13
-[; ;eeprom_external.c: 13:     i2c_vid_start();
-[e ( _i2c_vid_start ..  ]
-"14
-[; ;eeprom_external.c: 14:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
+"16
+[; ;pwm.c: 16:     T2CKPS1 = 1;
+[e = _T2CKPS1 -> -> 1 `i `b ]
+"17
+[; ;pwm.c: 17:     T2CKPS0 = 0;
+[e = _T2CKPS0 -> -> 0 `i `b ]
+"19
+[; ;pwm.c: 19:     switch (channel) {
+[e $U 97  ]
+{
+"20
+[; ;pwm.c: 20:         case 1:
+[e :U 98 ]
+"22
+[; ;pwm.c: 22:             CCP1M3 = 1;
+[e = _CCP1M3 -> -> 1 `i `b ]
+"23
+[; ;pwm.c: 23:             CCP1M2 = 1;
+[e = _CCP1M2 -> -> 1 `i `b ]
+"25
+[; ;pwm.c: 25:             PR2 = (8000000 / (frequency * 4 * 16));
+[e = _PR2 -> / -> 8000000 `l -> * * -> _frequency `ui -> -> 4 `i `ui -> -> 16 `i `ui `l `uc ]
+"27
+[; ;pwm.c: 27:             dio_vid_set_pin_direction(C, 2, 0x00);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 2 `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+"28
+[; ;pwm.c: 28:             break;
+[e $U 96  ]
+"29
+[; ;pwm.c: 29:         case 2:
+[e :U 99 ]
+"31
+[; ;pwm.c: 31:             CCP2M3 = 1;
+[e = _CCP2M3 -> -> 1 `i `b ]
+"32
+[; ;pwm.c: 32:             CCP2M2 = 1;
+[e = _CCP2M2 -> -> 1 `i `b ]
+"34
+[; ;pwm.c: 34:             PR2 = (8000000 / (frequency * 4 * 16));
+[e = _PR2 -> / -> 8000000 `l -> * * -> _frequency `ui -> -> 4 `i `ui -> -> 16 `i `ui `l `uc ]
+"36
+[; ;pwm.c: 36:             dio_vid_set_pin_direction(C, 1, 0x00);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 2 `uc -> -> 1 `i `uc -> -> 0 `i `uc ]
+"37
+[; ;pwm.c: 37:             break;
+[e $U 96  ]
+"38
+[; ;pwm.c: 38:     }
+}
 [e $U 96  ]
 [e :U 97 ]
-"15
-[; ;eeprom_external.c: 15:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
+[e [\ -> _channel `i , $ -> 1 `i 98
+ , $ -> 2 `i 99
+ 96 ]
 [e :U 96 ]
-"14
-[; ;eeprom_external.c: 14:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $ != -> ( _i2c_u8_master_write_slave_address_with_write_req (1 -> -> 80 `i `uc `i -> 0 `i 97  ]
-[e :U 98 ]
-"16
-[; ;eeprom_external.c: 16:     i2c_u8_master_write_byte(address >> 8);
-[e ( _i2c_u8_master_write_byte (1 -> >> -> _address `i -> 8 `i `uc ]
-"17
-[; ;eeprom_external.c: 17:     i2c_u8_master_write_byte((u8) address);
-[e ( _i2c_u8_master_write_byte (1 _address ]
-"18
-[; ;eeprom_external.c: 18:     i2c_u8_master_write_byte(data);
-[e ( _i2c_u8_master_write_byte (1 _data ]
-"19
-[; ;eeprom_external.c: 19:     i2c_vid_stop();
-[e ( _i2c_vid_stop ..  ]
-"20
-[; ;eeprom_external.c: 20: }
+"39
+[; ;pwm.c: 39: }
 [e :UE 95 ]
 }
-"21
-[; ;eeprom_external.c: 21: u8 eeprom_external_vid_read(u8 address) {
-[v _eeprom_external_vid_read `(uc ~T0 @X0 1 ef1`uc ]
+"41
+[; ;pwm.c: 41: void pwm_vid_start(void) {
+[v _pwm_vid_start `(v ~T0 @X0 1 ef ]
 {
-[e :U _eeprom_external_vid_read ]
-[v _address `uc ~T0 @X0 1 r1 ]
+[e :U _pwm_vid_start ]
 [f ]
-"22
-[; ;eeprom_external.c: 22:     i2c_vid_master_init();
-[e ( _i2c_vid_master_init ..  ]
-"23
-[; ;eeprom_external.c: 23:     u8 data;
-[v _data `uc ~T0 @X0 1 a ]
-"24
-[; ;eeprom_external.c: 24:     i2c_vid_start();
-[e ( _i2c_vid_start ..  ]
-"25
-[; ;eeprom_external.c: 25:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $U 100  ]
-[e :U 101 ]
-"26
-[; ;eeprom_external.c: 26:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
-[e :U 100 ]
-"25
-[; ;eeprom_external.c: 25:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $ != -> ( _i2c_u8_master_write_slave_address_with_write_req (1 -> -> 80 `i `uc `i -> 0 `i 101  ]
+"43
+[; ;pwm.c: 43:     TMR2ON = 1;
+[e = _TMR2ON -> -> 1 `i `b ]
+"44
+[; ;pwm.c: 44: }
+[e :UE 100 ]
+}
+"46
+[; ;pwm.c: 46: void pwm_vid_stop(u8 channel) {
+[v _pwm_vid_stop `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _pwm_vid_stop ]
+[v _channel `uc ~T0 @X0 1 r1 ]
+[f ]
+"47
+[; ;pwm.c: 47:     switch (channel) {
+[e $U 103  ]
+{
+"48
+[; ;pwm.c: 48:         case 1:
+[e :U 104 ]
+"49
+[; ;pwm.c: 49:             CCP1M3 = 0;
+[e = _CCP1M3 -> -> 0 `i `b ]
+"50
+[; ;pwm.c: 50:             CCP1M2 = 0;
+[e = _CCP1M2 -> -> 0 `i `b ]
+"51
+[; ;pwm.c: 51:             break;
+[e $U 102  ]
+"53
+[; ;pwm.c: 53:         case 2:
+[e :U 105 ]
+"54
+[; ;pwm.c: 54:             CCP2M3 = 0;
+[e = _CCP2M3 -> -> 0 `i `b ]
+"55
+[; ;pwm.c: 55:             CCP2M2 = 0;
+[e = _CCP2M2 -> -> 0 `i `b ]
+"56
+[; ;pwm.c: 56:             break;
+[e $U 102  ]
+"57
+[; ;pwm.c: 57:         default:
+[e :U 106 ]
+"58
+[; ;pwm.c: 58:             break;
+[e $U 102  ]
+"59
+[; ;pwm.c: 59:     }
+}
+[e $U 102  ]
+[e :U 103 ]
+[e [\ -> _channel `i , $ -> 1 `i 104
+ , $ -> 2 `i 105
+ 106 ]
 [e :U 102 ]
-"27
-[; ;eeprom_external.c: 27:     i2c_u8_master_write_byte(address >> 8);
-[e ( _i2c_u8_master_write_byte (1 -> >> -> _address `i -> 8 `i `uc ]
-"28
-[; ;eeprom_external.c: 28:     i2c_u8_master_write_byte((u8) address);
-[e ( _i2c_u8_master_write_byte (1 _address ]
-"29
-[; ;eeprom_external.c: 29:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
-"30
-[; ;eeprom_external.c: 30:     i2c_u8_master_write_slave_address_with_read_req(0x50);
-[e ( _i2c_u8_master_write_slave_address_with_read_req (1 -> -> 80 `i `uc ]
-"31
-[; ;eeprom_external.c: 31:     data = i2c_u8_master_read_byte();
-[e = _data ( _i2c_u8_master_read_byte ..  ]
-"32
-[; ;eeprom_external.c: 32:     i2c_vid_nack();
-[e ( _i2c_vid_nack ..  ]
-"33
-[; ;eeprom_external.c: 33:     i2c_vid_stop();
-[e ( _i2c_vid_stop ..  ]
-"34
-[; ;eeprom_external.c: 34:     return data;
-[e ) _data ]
-[e $UE 99  ]
-"35
-[; ;eeprom_external.c: 35: }
-[e :UE 99 ]
+"60
+[; ;pwm.c: 60: }
+[e :UE 101 ]
+}
+"62
+[; ;pwm.c: 62: void pwm_vid_set_duty(u8 duty) {
+[v _pwm_vid_set_duty `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _pwm_vid_set_duty ]
+[v _duty `uc ~T0 @X0 1 r1 ]
+[f ]
+"75
+[; ;pwm.c: 75:     CCP1X = 0;
+[e = _CCP1X -> -> 0 `i `b ]
+"76
+[; ;pwm.c: 76:     CCP1Y = 0;
+[e = _CCP1Y -> -> 0 `i `b ]
+"77
+[; ;pwm.c: 77:     CCPR1L = ((f32) duty / 100) * PR2;
+[e = _CCPR1L -> * / -> _duty `f -> -> 100 `i `f -> -> _PR2 `i `f `uc ]
+"78
+[; ;pwm.c: 78: }
+[e :UE 107 ]
 }

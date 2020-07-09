@@ -35,19 +35,37 @@ C 2
 D 3
 E 4
 ]
+"27 G:\MPLABXProjects\electric-water-heater.X\pwm.c
+[e E860 . `uc
+A 0
+B 1
+C 2
+D 3
+E 4
+]
+"5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8.c
 [v ___bmul __bmul `(uc  1 e 1 0 ]
 [v i1___bmul __bmul `(uc  1 e 1 0 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
@@ -78,7 +96,7 @@ E 4
 [v _display_set_setting_mode display_set_setting_mode `(v  1 e 1 0 ]
 "11 G:\MPLABXProjects\electric-water-heater.X\eeprom_external.c
 [v _eeprom_external_vid_write eeprom_external_vid_write `(v  1 e 1 0 ]
-"20
+"21
 [v _eeprom_external_vid_read eeprom_external_vid_read `(uc  1 e 1 0 ]
 "16 G:\MPLABXProjects\electric-water-heater.X\i2c.c
 [v _i2c_vid_master_init i2c_vid_master_init `(v  1 e 1 0 ]
@@ -100,7 +118,7 @@ E 4
 [v _i2c_u8_master_write_byte i2c_u8_master_write_byte `(uc  1 e 1 0 ]
 "103
 [v _i2c_u8_master_read_byte i2c_u8_master_read_byte `(uc  1 e 1 0 ]
-"23 G:\MPLABXProjects\electric-water-heater.X\main.c
+"24 G:\MPLABXProjects\electric-water-heater.X\main.c
 [v _main main `(i  1 e 2 0 ]
 "19 G:\MPLABXProjects\electric-water-heater.X\scheduler.c
 [v _sch_vid_init sch_vid_init `(v  1 e 1 0 ]
@@ -144,6 +162,8 @@ E 4
 [v _PIR1 PIR1 `VEuc  1 e 1 @12 ]
 "808
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"892
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
 "1325
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1375
@@ -156,6 +176,8 @@ E 4
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
 "1754
 [v _SSPCON2 SSPCON2 `VEuc  1 e 1 @145 ]
+"1816
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
 "1823
 [v _SSPADD SSPADD `VEuc  1 e 1 @147 ]
 "1830
@@ -166,6 +188,18 @@ E 4
 [v _ACKEN ACKEN `VEb  1 e 0 @1164 ]
 "2380
 [v _ACKSTAT ACKSTAT `VEb  1 e 0 @1166 ]
+"2446
+[v _CCP1M2 CCP1M2 `VEb  1 e 0 @186 ]
+"2449
+[v _CCP1M3 CCP1M3 `VEb  1 e 0 @187 ]
+"2452
+[v _CCP1X CCP1X `VEb  1 e 0 @189 ]
+"2455
+[v _CCP1Y CCP1Y `VEb  1 e 0 @188 ]
+"2470
+[v _CCP2M2 CCP2M2 `VEb  1 e 0 @234 ]
+"2473
+[v _CCP2M3 CCP2M3 `VEb  1 e 0 @235 ]
 "2569
 [v _GIE GIE `VEb  1 e 0 @95 ]
 "2629
@@ -200,6 +234,10 @@ E 4
 [v _SSPM3 SSPM3 `VEb  1 e 0 @163 ]
 "2845
 [v _T0CS T0CS `VEb  1 e 0 @1037 ]
+"2872
+[v _T2CKPS0 T2CKPS0 `VEb  1 e 0 @144 ]
+"2875
+[v _T2CKPS1 T2CKPS1 `VEb  1 e 0 @145 ]
 "2878
 [v _TMR0IE TMR0IE `VEb  1 e 0 @93 ]
 "2881
@@ -208,6 +246,8 @@ E 4
 [v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
 "2899
 [v _TMR2IF TMR2IF `VEb  1 e 0 @97 ]
+"2902
+[v _TMR2ON TMR2ON `VEb  1 e 0 @146 ]
 "21 G:\MPLABXProjects\electric-water-heater.X\counter.c
 [v _buttonPressedFlag buttonPressedFlag `uc  1 e 1 0 ]
 "24
@@ -216,9 +256,9 @@ E 4
 [v _settingModeFlag settingModeFlag `uc  1 e 1 0 ]
 "20
 [v _settingModeCounter settingModeCounter `us  1 e 2 0 ]
-[s S253 data 13 `*.27(v 1 taskFunction 1 0 `ul 1 delay 4 1 `ul 1 period 4 5 `ul 1 runMe 4 9 ]
+[s S255 data 13 `*.27(v 1 taskFunction 1 0 `ul 1 delay 4 1 `ul 1 period 4 5 `ul 1 runMe 4 9 ]
 "17 G:\MPLABXProjects\electric-water-heater.X\scheduler.c
-[v _sch_tasks sch_tasks `[3]S253  1 e 39 0 ]
+[v _sch_tasks sch_tasks `[3]S255  1 e 39 0 ]
 "20 G:\MPLABXProjects\electric-water-heater.X\ssd.c
 [v _ssdSymbol ssdSymbol `us  1 e 2 0 ]
 "21
@@ -229,7 +269,7 @@ E 4
 [v _timer1_isr timer1_isr `*.27(v  1 e 1 0 ]
 "19
 [v _timer2_isr timer2_isr `*.27(v  1 e 1 0 ]
-"23 G:\MPLABXProjects\electric-water-heater.X\main.c
+"24 G:\MPLABXProjects\electric-water-heater.X\main.c
 [v _main main `(i  1 e 2 0 ]
 {
 "36
@@ -330,9 +370,9 @@ E 4
 {
 [v eeprom_external_vid_write@address address `uc  1 a 1 wreg ]
 [v eeprom_external_vid_write@address address `uc  1 a 1 wreg ]
-[v eeprom_external_vid_write@data data `uc  1 p 1 8 ]
-[v eeprom_external_vid_write@address address `uc  1 a 1 9 ]
-"19
+[v eeprom_external_vid_write@data data `uc  1 p 1 12 ]
+[v eeprom_external_vid_write@address address `uc  1 a 1 13 ]
+"20
 } 0
 "65 G:\MPLABXProjects\electric-water-heater.X\display.c
 [v _display_set_setting_mode display_set_setting_mode `(v  1 e 1 0 ]
@@ -389,11 +429,6 @@ E 4
 "6
 [v ___bmul@multiplier multiplier `uc  1 a 1 9 ]
 "51
-} 0
-"16 G:\MPLABXProjects\electric-water-heater.X\i2c.c
-[v _i2c_vid_master_init i2c_vid_master_init `(v  1 e 1 0 ]
-{
-"35
 } 0
 "22 G:\MPLABXProjects\electric-water-heater.X\display.c
 [v _display_init display_init `(v  1 e 1 0 ]
@@ -454,17 +489,16 @@ E 4
 {
 "33
 } 0
-"20 G:\MPLABXProjects\electric-water-heater.X\eeprom_external.c
+"21 G:\MPLABXProjects\electric-water-heater.X\eeprom_external.c
 [v _eeprom_external_vid_read eeprom_external_vid_read `(uc  1 e 1 0 ]
 {
 [v eeprom_external_vid_read@address address `uc  1 a 1 wreg ]
+"23
+[v eeprom_external_vid_read@data data `uc  1 a 1 14 ]
 "21
-[v eeprom_external_vid_read@data data `uc  1 a 1 10 ]
-"20
 [v eeprom_external_vid_read@address address `uc  1 a 1 wreg ]
-"22
-[v eeprom_external_vid_read@address address `uc  1 a 1 9 ]
-"33
+[v eeprom_external_vid_read@address address `uc  1 a 1 13 ]
+"35
 } 0
 "43 G:\MPLABXProjects\electric-water-heater.X\i2c.c
 [v _i2c_vid_stop i2c_vid_stop `(v  1 e 1 0 ]
@@ -486,7 +520,22 @@ E 4
 {
 "69
 } 0
-"71
+"16
+[v _i2c_vid_master_init i2c_vid_master_init `(v  1 e 1 0 ]
+{
+"35
+} 0
+"116 G:\MPLABXProjects\electric-water-heater.X\dio.c
+[v _dio_vid_set_pin_direction dio_vid_set_pin_direction `(v  1 e 1 0 ]
+{
+[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 wreg ]
+[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 wreg ]
+[v dio_vid_set_pin_direction@index index `uc  1 p 1 6 ]
+[v dio_vid_set_pin_direction@direction direction `uc  1 p 1 7 ]
+[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 10 ]
+"149
+} 0
+"71 G:\MPLABXProjects\electric-water-heater.X\i2c.c
 [v _i2c_u8_master_write_slave_address_with_write_req i2c_u8_master_write_slave_address_with_write_req `(uc  1 e 1 0 ]
 {
 [v i2c_u8_master_write_slave_address_with_write_req@address address `uc  1 a 1 wreg ]
@@ -519,16 +568,6 @@ E 4
 [v _i2c_vid_wait i2c_vid_wait `(v  1 e 1 0 ]
 {
 "57
-} 0
-"116 G:\MPLABXProjects\electric-water-heater.X\dio.c
-[v _dio_vid_set_pin_direction dio_vid_set_pin_direction `(v  1 e 1 0 ]
-{
-[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 wreg ]
-[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 wreg ]
-[v dio_vid_set_pin_direction@index index `uc  1 p 1 6 ]
-[v dio_vid_set_pin_direction@direction direction `uc  1 p 1 7 ]
-[v dio_vid_set_pin_direction@portNumber portNumber `uc  1 a 1 10 ]
-"149
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]

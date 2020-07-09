@@ -15,7 +15,7 @@
 #define DEVICE_SETTING_MODE_ON 1
 
 extern u8 displayFlag;
-void display_init (void);
+void display_vid_init (void);
 void display_vid_update (void);
 void display_set_setting_mode (u8 mode);
 

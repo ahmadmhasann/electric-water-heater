@@ -1,6 +1,6 @@
 /*
  * File:   main.c
- * Author: Hassan
+ * Author: Ahmed Hassan
  *
  * Created on July 4, 2020
  */
@@ -19,10 +19,11 @@
 #include "eeprom_external.h"
 #include "counter.h"
 #include "display.h"
+#include "pwm.h"
 
 int main(void) {
-    i2c_vid_master_init();
-    display_init();
+    
+    display_vid_init();
     sch_vid_init();
     sch_u8_add_task(counter_vid_update, 20, 20);
     sch_u8_add_task(display_vid_update, 0, 20);
@@ -31,6 +32,10 @@ int main(void) {
     while (1) {
         sch_vid_dispatch_tasks();
     }
-
-
+    
 }
+
+
+
+
+

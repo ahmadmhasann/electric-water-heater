@@ -10,4 +10,5 @@ timer.h  \
 i2c.h  \
 eeprom_external.h  \
 counter.h  \
-display.h 
+display.h  \
+pwm.h 

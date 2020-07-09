@@ -1,31 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"17 ./i2c.h
-[; ;./i2c.h: 17: void i2c_vid_master_init(void);
-[v _i2c_vid_master_init `(v ~T0 @X0 0 ef ]
-"18
-[; ;./i2c.h: 18: void i2c_vid_start(void);
-[v _i2c_vid_start `(v ~T0 @X0 0 ef ]
-"20
-[; ;./i2c.h: 20: void i2c_vid_restart(void);
-[v _i2c_vid_restart `(v ~T0 @X0 0 ef ]
-"24
-[; ;./i2c.h: 24: u8 i2c_u8_master_write_slave_address_with_write_req(u8 address);
-[v _i2c_u8_master_write_slave_address_with_write_req `(uc ~T0 @X0 0 ef1`uc ]
-"26
-[; ;./i2c.h: 26: u8 i2c_u8_master_write_byte(u8 data);
-[v _i2c_u8_master_write_byte `(uc ~T0 @X0 0 ef1`uc ]
-"19
-[; ;./i2c.h: 19: void i2c_vid_stop(void);
-[v _i2c_vid_stop `(v ~T0 @X0 0 ef ]
-"25
-[; ;./i2c.h: 25: u8 i2c_u8_master_write_slave_address_with_read_req(u8 address);
-[v _i2c_u8_master_write_slave_address_with_read_req `(uc ~T0 @X0 0 ef1`uc ]
-"27
-[; ;./i2c.h: 27: u8 i2c_u8_master_read_byte(void);
-[v _i2c_u8_master_read_byte `(uc ~T0 @X0 0 ef ]
-"23
-[; ;./i2c.h: 23: void i2c_vid_nack(void);
-[v _i2c_vid_nack `(v ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -206,102 +179,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"11 eeprom_external.c
-[; ;eeprom_external.c: 11: void eeprom_external_vid_write(u8 address, u8 data) {
-[v _eeprom_external_vid_write `(v ~T0 @X0 1 ef2`uc`uc ]
+"10 switch.c
+[; ;switch.c: 10: void switch_vid_init (void) {
+[v _switch_vid_init `(v ~T0 @X0 1 ef ]
 {
-[e :U _eeprom_external_vid_write ]
-[v _address `uc ~T0 @X0 1 r1 ]
-[v _data `uc ~T0 @X0 1 r2 ]
+[e :U _switch_vid_init ]
 [f ]
 "12
-[; ;eeprom_external.c: 12:     i2c_vid_master_init();
-[e ( _i2c_vid_master_init ..  ]
-"13
-[; ;eeprom_external.c: 13:     i2c_vid_start();
-[e ( _i2c_vid_start ..  ]
-"14
-[; ;eeprom_external.c: 14:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $U 96  ]
-[e :U 97 ]
-"15
-[; ;eeprom_external.c: 15:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
-[e :U 96 ]
-"14
-[; ;eeprom_external.c: 14:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $ != -> ( _i2c_u8_master_write_slave_address_with_write_req (1 -> -> 80 `i `uc `i -> 0 `i 97  ]
-[e :U 98 ]
-"16
-[; ;eeprom_external.c: 16:     i2c_u8_master_write_byte(address >> 8);
-[e ( _i2c_u8_master_write_byte (1 -> >> -> _address `i -> 8 `i `uc ]
-"17
-[; ;eeprom_external.c: 17:     i2c_u8_master_write_byte((u8) address);
-[e ( _i2c_u8_master_write_byte (1 _address ]
-"18
-[; ;eeprom_external.c: 18:     i2c_u8_master_write_byte(data);
-[e ( _i2c_u8_master_write_byte (1 _data ]
-"19
-[; ;eeprom_external.c: 19:     i2c_vid_stop();
-[e ( _i2c_vid_stop ..  ]
-"20
-[; ;eeprom_external.c: 20: }
+[; ;switch.c: 12: }
 [e :UE 95 ]
 }
-"21
-[; ;eeprom_external.c: 21: u8 eeprom_external_vid_read(u8 address) {
-[v _eeprom_external_vid_read `(uc ~T0 @X0 1 ef1`uc ]
+"13
+[; ;switch.c: 13: void switch_vid_update (void) {
+[v _switch_vid_update `(v ~T0 @X0 1 ef ]
 {
-[e :U _eeprom_external_vid_read ]
-[v _address `uc ~T0 @X0 1 r1 ]
+[e :U _switch_vid_update ]
 [f ]
-"22
-[; ;eeprom_external.c: 22:     i2c_vid_master_init();
-[e ( _i2c_vid_master_init ..  ]
-"23
-[; ;eeprom_external.c: 23:     u8 data;
-[v _data `uc ~T0 @X0 1 a ]
-"24
-[; ;eeprom_external.c: 24:     i2c_vid_start();
-[e ( _i2c_vid_start ..  ]
-"25
-[; ;eeprom_external.c: 25:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $U 100  ]
-[e :U 101 ]
-"26
-[; ;eeprom_external.c: 26:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
-[e :U 100 ]
-"25
-[; ;eeprom_external.c: 25:     while(i2c_u8_master_write_slave_address_with_write_req(0x50))
-[e $ != -> ( _i2c_u8_master_write_slave_address_with_write_req (1 -> -> 80 `i `uc `i -> 0 `i 101  ]
-[e :U 102 ]
-"27
-[; ;eeprom_external.c: 27:     i2c_u8_master_write_byte(address >> 8);
-[e ( _i2c_u8_master_write_byte (1 -> >> -> _address `i -> 8 `i `uc ]
-"28
-[; ;eeprom_external.c: 28:     i2c_u8_master_write_byte((u8) address);
-[e ( _i2c_u8_master_write_byte (1 _address ]
-"29
-[; ;eeprom_external.c: 29:     i2c_vid_restart();
-[e ( _i2c_vid_restart ..  ]
-"30
-[; ;eeprom_external.c: 30:     i2c_u8_master_write_slave_address_with_read_req(0x50);
-[e ( _i2c_u8_master_write_slave_address_with_read_req (1 -> -> 80 `i `uc ]
-"31
-[; ;eeprom_external.c: 31:     data = i2c_u8_master_read_byte();
-[e = _data ( _i2c_u8_master_read_byte ..  ]
-"32
-[; ;eeprom_external.c: 32:     i2c_vid_nack();
-[e ( _i2c_vid_nack ..  ]
-"33
-[; ;eeprom_external.c: 33:     i2c_vid_stop();
-[e ( _i2c_vid_stop ..  ]
-"34
-[; ;eeprom_external.c: 34:     return data;
-[e ) _data ]
-[e $UE 99  ]
-"35
-[; ;eeprom_external.c: 35: }
-[e :UE 99 ]
+"15
+[; ;switch.c: 15: }
+[e :UE 96 ]
+}
+"16
+[; ;switch.c: 16: u8 switch_u8_get_state (void) {
+[v _switch_u8_get_state `(uc ~T0 @X0 1 ef ]
+{
+[e :U _switch_u8_get_state ]
+[f ]
+"18
+[; ;switch.c: 18: }
+[e :UE 97 ]
 }

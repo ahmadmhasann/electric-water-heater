@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "switch.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
+# 1 "switch.c" 2
 
 
 
@@ -1727,21 +1726,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 8 "main.c" 2
-
-
-
-# 1 "./config.h" 1
-# 21 "./config.h"
-#pragma config FOSC = HS
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config BOREN = ON
-#pragma config LVP = OFF
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CP = OFF
-# 11 "main.c" 2
+# 7 "switch.c" 2
 
 # 1 "./types.h" 1
 # 10 "./types.h"
@@ -1755,132 +1740,15 @@ typedef unsigned long long int u64;
 typedef float f32;
 typedef double f64;
 typedef long double f96;
-# 12 "main.c" 2
-
-# 1 "./macros.h" 1
-# 13 "main.c" 2
-
-# 1 "./dio.h" 1
-# 10 "./dio.h"
-enum {
- A,
- B,
- C,
- D,
-    E
-};
-# 30 "./dio.h"
-void dio_vid_set_port_direction (u8 portNumber, u8 direction);
-void dio_vid_set_port_value (u8 portNumber, u8 value);
-u8 dio_u8_read_port_value (u8 portNumber);
-u8 dio_u8_read_pin_value (u8 portNumber, u8 index);
-void dio_vid_set_pin_value (u8 portNumber, u8 index, u8 value);
-void dio_vid_set_pin_direction (u8 portNumber, u8 index, u8 direction);
-# 14 "main.c" 2
-
-# 1 "./ssd.h" 1
-# 30 "./ssd.h"
-void ssd_vid_init(void);
-void ssd_vid_update();
-u8 ssd_u8_get_symbol();
-void ssd_vid_set_symbol(u8 symbol);
-u8 ssd_u8_get_state(void);
-void ssd_vid_set_state(u8 state);
-u8 ssd_u8_get_code(u8 number);
-# 15 "main.c" 2
-
-# 1 "./scheduler.h" 1
-# 15 "./scheduler.h"
-typedef struct data {
-
-    void (*taskFunction)(void);
-
-    u64 delay;
-
-    u64 period;
-
-    u64 runMe;
-} sTask;
-
-void sch_vid_dispatch_tasks(void);
-
-u8 sch_u8_add_task(void ( * pFunction)(),
-        const u64 DELAY,
-        const u64 PERIOD);
-void timerInit(void);
-void sch_vid_init(void);
-u8 sch_vid_delete_task(u8 index);
-void SCH_Report_Status(void);
-void SCH_Go_To_Sleep(void);
-void sch_update(void);
-# 16 "main.c" 2
-
-# 1 "./timer.h" 1
-# 12 "./timer.h"
-void timer_vid_init_0(u16 prescaler, u8 interruptEnable);
-void timer_vid_set_isr_0(void (*callback_function) (void));
-void timer_vid_set_isr_1(void (*callback_function) (void));
-void timer_vid_set_isr_2(void (*callback_function) (void));
-# 17 "main.c" 2
-
-# 1 "./i2c.h" 1
-# 17 "./i2c.h"
-void i2c_vid_master_init(void);
-void i2c_vid_start(void);
-void i2c_vid_stop(void);
-void i2c_vid_restart(void);
-void i2c_vid_wait(void);
-void i2c_vid_ack(void);
-void i2c_vid_nack(void);
-u8 i2c_u8_master_write_slave_address_with_write_req(u8 address);
-u8 i2c_u8_master_write_slave_address_with_read_req(u8 address);
-u8 i2c_u8_master_write_byte(u8 data);
-u8 i2c_u8_master_read_byte(void);
-# 18 "main.c" 2
-
-# 1 "./eeprom_external.h" 1
-# 13 "./eeprom_external.h"
-void eeprom_external_vid_write(u8 address, u8 data);
-u8 eeprom_external_vid_read(u8 address);
-# 19 "main.c" 2
-
-# 1 "./counter.h" 1
-# 12 "./counter.h"
-extern u8 buttonPressedFlag;
-extern u8 settingModeFlag;
-extern u16 settingModeCounter;
-void counter_vid_init(void);
-void counter_vid_update(void);
-u8 counter_u8_get_counter (void);
-# 20 "main.c" 2
-
-# 1 "./display.h" 1
-# 17 "./display.h"
-extern u8 displayFlag;
-void display_init (void);
-void display_vid_update (void);
-void display_set_setting_mode (u8 mode);
-# 21 "main.c" 2
-
-# 1 "./pwm.h" 1
-# 14 "./pwm.h"
-void pwm_vid_init(u8 channel, u16 frequency);
-void pwm_vid_start(void);
-void pwm_vid_stop(u8 channel);
-void pwm_vid_set_duty(u8 duty);
-# 22 "main.c" 2
+# 8 "switch.c" 2
 
 
-int main(void) {
+void switch_vid_init (void) {
 
-    display_init();
-    sch_vid_init();
-    sch_u8_add_task(counter_vid_update, 20, 20);
-    sch_u8_add_task(display_vid_update, 0, 20);
-    sch_u8_add_task(ssd_vid_update, 5, 5);
+}
+void switch_vid_update (void) {
 
-    while (1) {
-        sch_vid_dispatch_tasks();
-    }
+}
+u8 switch_u8_get_state (void) {
 
 }

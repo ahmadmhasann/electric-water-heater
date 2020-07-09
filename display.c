@@ -19,7 +19,7 @@ u8 displayFlag = 0xff;
 u8 settingModeFlag = 0;
 u16 settingModeCounter = 0;
 
-void display_init(void) {
+void display_vid_init(void) {
     counter_vid_init();
     
     ssd_vid_set_state(SSD_ON);
