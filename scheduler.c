@@ -86,7 +86,7 @@ void sch_vid_dispatch_tasks(void) {
     }
 }
 
-u8 sch_vid_delete_task(u8 index) {
+void sch_vid_delete_task(u8 index) {
     if (index < SCH_MAX_TASKS) {
         sch_tasks[index].taskFunction = 0x0000;
         sch_tasks[index].delay = 0;

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F922 `(v ~T0 @X0 0 tf ]
-[v F924 `(v ~T0 @X0 0 tf ]
-[v F926 `(v ~T0 @X0 0 tf ]
+[v F921 `(v ~T0 @X0 0 tf ]
+[v F923 `(v ~T0 @X0 0 tf ]
+[v F925 `(v ~T0 @X0 0 tf ]
 [t ~ __interrupt . k ]
 [t T1 __interrupt ]
 "2881 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
@@ -16,12 +16,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2899
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2899: extern volatile __bit TMR2IF __attribute__((address(0x61)));
 [v _TMR2IF `Vb ~T0 @X0 0 e@97 ]
-[v F929 `(v ~T0 @X0 0 tf ]
-[v F931 `(v ~T0 @X0 0 tf ]
-[v F934 `(v ~T0 @X0 0 tf ]
-[v F936 `(v ~T0 @X0 0 tf ]
-[v F939 `(v ~T0 @X0 0 tf ]
-[v F941 `(v ~T0 @X0 0 tf ]
+[v F928 `(v ~T0 @X0 0 tf ]
+[v F930 `(v ~T0 @X0 0 tf ]
+[v F933 `(v ~T0 @X0 0 tf ]
+[v F935 `(v ~T0 @X0 0 tf ]
+[v F938 `(v ~T0 @X0 0 tf ]
+[v F940 `(v ~T0 @X0 0 tf ]
 "2845
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2845: extern volatile __bit T0CS __attribute__((address(0x40D)));
 [v _T0CS `Vb ~T0 @X0 0 e@1037 ]
@@ -228,13 +228,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" EECON2 equ 018Dh ;# ">
 "17 timer.c
 [; ;timer.c: 17: void(*timer0_isr)(void);
-[v _timer0_isr `*F922 ~T0 @X0 1 e ]
+[v _timer0_isr `*F921 ~T0 @X0 1 e ]
 "18
 [; ;timer.c: 18: void(*timer1_isr)(void);
-[v _timer1_isr `*F924 ~T0 @X0 1 e ]
+[v _timer1_isr `*F923 ~T0 @X0 1 e ]
 "19
 [; ;timer.c: 19: void(*timer2_isr)(void);
-[v _timer2_isr `*F926 ~T0 @X0 1 e ]
+[v _timer2_isr `*F925 ~T0 @X0 1 e ]
 [v $root$_timer_isr `(v ~T0 @X0 0 e ]
 "21
 [; ;timer.c: 21: void __attribute__((picinterrupt(("")))) timer_isr() {
@@ -290,10 +290,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "36
 [; ;timer.c: 36: void timer_vid_set_isr_0(void (*callback_function) (void)) {
-[v _timer_vid_set_isr_0 `(v ~T0 @X0 1 ef1`*F929 ]
+[v _timer_vid_set_isr_0 `(v ~T0 @X0 1 ef1`*F928 ]
 {
 [e :U _timer_vid_set_isr_0 ]
-[v _callback_function `*F931 ~T0 @X0 1 r1 ]
+[v _callback_function `*F930 ~T0 @X0 1 r1 ]
 [f ]
 "37
 [; ;timer.c: 37:     timer0_isr = callback_function;
@@ -304,10 +304,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "40
 [; ;timer.c: 40: void timer_vid_set_isr_1(void (*callback_function) (void)) {
-[v _timer_vid_set_isr_1 `(v ~T0 @X0 1 ef1`*F934 ]
+[v _timer_vid_set_isr_1 `(v ~T0 @X0 1 ef1`*F933 ]
 {
 [e :U _timer_vid_set_isr_1 ]
-[v _callback_function `*F936 ~T0 @X0 1 r1 ]
+[v _callback_function `*F935 ~T0 @X0 1 r1 ]
 [f ]
 "41
 [; ;timer.c: 41:     timer1_isr = callback_function;
@@ -318,10 +318,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "44
 [; ;timer.c: 44: void timer_vid_set_isr_2(void (*callback_function) (void)) {
-[v _timer_vid_set_isr_2 `(v ~T0 @X0 1 ef1`*F939 ]
+[v _timer_vid_set_isr_2 `(v ~T0 @X0 1 ef1`*F938 ]
 {
 [e :U _timer_vid_set_isr_2 ]
-[v _callback_function `*F941 ~T0 @X0 1 r1 ]
+[v _callback_function `*F940 ~T0 @X0 1 r1 ]
 [f ]
 "45
 [; ;timer.c: 45:     timer2_isr = callback_function;

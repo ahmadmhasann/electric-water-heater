@@ -1,4 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"35 ./dio.h
+[; ;./dio.h: 35: void dio_vid_set_pin_direction (u8 portNumber, u8 index, u8 direction);
+[v _dio_vid_set_pin_direction `(v ~T0 @X0 0 ef3`uc`uc`uc ]
+"22 switch.c
+[; ;switch.c: 22:     dio_vid_set_pin_direction(C, 2, 0x00);
+[c E869 0 1 2 3 4 .. ]
+[n E869 . A B C D E  ]
+"12 ./adc.h
+[; ;./adc.h: 12: void adc_vid_init ();
+[v _adc_vid_init `(v ~T0 @X0 0 e? ]
+"33 ./dio.h
+[; ;./dio.h: 33: u8 dio_u8_read_pin_value (u8 portNumber, u8 index);
+[v _dio_u8_read_pin_value `(uc ~T0 @X0 0 ef2`uc`uc ]
+"13 ./adc.h
+[; ;./adc.h: 13: u16 adc_u8_get_value (u8 channel);
+[v _adc_u8_get_value `(us ~T0 @X0 0 ef1`uc ]
+"17 ./counter.h
+[; ;./counter.h: 17: u8 counter_u8_get_counter (void);
+[v _counter_u8_get_counter `(uc ~T0 @X0 0 ef ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -179,33 +198,196 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"10 switch.c
-[; ;switch.c: 10: void switch_vid_init (void) {
+"14 switch.c
+[; ;switch.c: 14: u8 current_state = 4;
+[v _current_state `uc ~T0 @X0 1 e ]
+[i _current_state
+-> -> 4 `i `uc
+]
+"15
+[; ;switch.c: 15: u8 device_state = 4;
+[v _device_state `uc ~T0 @X0 1 e ]
+[i _device_state
+-> -> 4 `i `uc
+]
+"16
+[; ;switch.c: 16: u16 avg_current_temperatuer = 0;
+[v _avg_current_temperatuer `us ~T0 @X0 1 e ]
+[i _avg_current_temperatuer
+-> -> 0 `i `us
+]
+"17
+[; ;switch.c: 17: u8 readings_counter = 0;
+[v _readings_counter `uc ~T0 @X0 1 e ]
+[i _readings_counter
+-> -> 0 `i `uc
+]
+"18
+[; ;switch.c: 18: u8 onOffButtonFlag = 0;
+[v _onOffButtonFlag `uc ~T0 @X0 1 e ]
+[i _onOffButtonFlag
+-> -> 0 `i `uc
+]
+"20
+[; ;switch.c: 20: void switch_vid_init(void) {
 [v _switch_vid_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _switch_vid_init ]
 [f ]
-"12
-[; ;switch.c: 12: }
+"22
+[; ;switch.c: 22:     dio_vid_set_pin_direction(C, 2, 0x00);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E869 2 `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+"23
+[; ;switch.c: 23:     dio_vid_set_pin_direction(C, 5, 0x00);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E869 2 `uc -> -> 5 `i `uc -> -> 0 `i `uc ]
+"24
+[; ;switch.c: 24:     adc_vid_init();
+[e ( _adc_vid_init ..  ]
+"25
+[; ;switch.c: 25:     dio_vid_set_pin_direction(B, 0, 0x01);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E869 1 `uc -> -> 0 `i `uc -> -> 1 `i `uc ]
+"27
+[; ;switch.c: 27: }
 [e :UE 95 ]
 }
-"13
-[; ;switch.c: 13: void switch_vid_update (void) {
+"29
+[; ;switch.c: 29: void switch_vid_update(void) {
 [v _switch_vid_update `(v ~T0 @X0 1 ef ]
 {
 [e :U _switch_vid_update ]
 [f ]
-"15
-[; ;switch.c: 15: }
+"31
+[; ;switch.c: 31:     if (dio_u8_read_pin_value(B, 0) == 0 && onOffButtonFlag == 0) {
+[e $ ! && == -> ( _dio_u8_read_pin_value (2 , -> . `E869 1 `uc -> -> 0 `i `uc `i -> 0 `i == -> _onOffButtonFlag `i -> 0 `i 97  ]
+{
+"32
+[; ;switch.c: 32:         onOffButtonFlag = 1;
+[e = _onOffButtonFlag -> -> 1 `i `uc ]
+"33
+[; ;switch.c: 33:         if (device_state == 3) {
+[e $ ! == -> _device_state `i -> 3 `i 98  ]
+{
+"34
+[; ;switch.c: 34:             device_state = 4;
+[e = _device_state -> -> 4 `i `uc ]
+"35
+[; ;switch.c: 35:         } else if (device_state == 4) {
+}
+[e $U 99  ]
+[e :U 98 ]
+[e $ ! == -> _device_state `i -> 4 `i 100  ]
+{
+"36
+[; ;switch.c: 36:             device_state = 3;
+[e = _device_state -> -> 3 `i `uc ]
+"37
+[; ;switch.c: 37:         }
+}
+[e :U 100 ]
+[e :U 99 ]
+"38
+[; ;switch.c: 38:     }
+}
+[e :U 97 ]
+"39
+[; ;switch.c: 39:     if (dio_u8_read_pin_value(B, 0) != 0) {
+[e $ ! != -> ( _dio_u8_read_pin_value (2 , -> . `E869 1 `uc -> -> 0 `i `uc `i -> 0 `i 101  ]
+{
+"40
+[; ;switch.c: 40:         onOffButtonFlag = 0;
+[e = _onOffButtonFlag -> -> 0 `i `uc ]
+"41
+[; ;switch.c: 41:     }
+}
+[e :U 101 ]
+"42
+[; ;switch.c: 42:     if (device_state == 4) {
+[e $ ! == -> _device_state `i -> 4 `i 102  ]
+{
+"44
+[; ;switch.c: 44:         u8 current_temperature = adc_u8_get_value(2) * 0.488;
+[v _current_temperature `uc ~T0 @X0 1 a ]
+[e = _current_temperature -> * -> -> ( _adc_u8_get_value (1 -> -> 2 `i `uc `ui `d .0.488 `uc ]
+"45
+[; ;switch.c: 45:         readings_counter++;
+[e ++ _readings_counter -> -> 1 `i `uc ]
+"46
+[; ;switch.c: 46:         avg_current_temperatuer += current_temperature;
+[e =+ _avg_current_temperatuer -> _current_temperature `us ]
+"49
+[; ;switch.c: 49:         if (readings_counter == 10) {
+[e $ ! == -> _readings_counter `i -> 10 `i 103  ]
+{
+"51
+[; ;switch.c: 51:             u8 set_temperature = counter_u8_get_counter();
+[v _set_temperature `uc ~T0 @X0 1 a ]
+[e = _set_temperature ( _counter_u8_get_counter ..  ]
+"52
+[; ;switch.c: 52:             readings_counter = 0;
+[e = _readings_counter -> -> 0 `i `uc ]
+"53
+[; ;switch.c: 53:             avg_current_temperatuer /= 10;
+[e =/ _avg_current_temperatuer -> -> 10 `i `ui ]
+"54
+[; ;switch.c: 54:             if (set_temperature > avg_current_temperatuer + 5) {
+[e $ ! > -> _set_temperature `ui + -> _avg_current_temperatuer `ui -> -> 5 `i `ui 104  ]
+{
+"55
+[; ;switch.c: 55:                 current_state = 2;
+[e = _current_state -> -> 2 `i `uc ]
+"56
+[; ;switch.c: 56:             }
+}
+[e :U 104 ]
+"57
+[; ;switch.c: 57:             if (avg_current_temperatuer > set_temperature + 5) {
+[e $ ! > -> _avg_current_temperatuer `ui -> + -> _set_temperature `i -> 5 `i `ui 105  ]
+{
+"58
+[; ;switch.c: 58:                 current_state = 1;
+[e = _current_state -> -> 1 `i `uc ]
+"59
+[; ;switch.c: 59:             }
+}
+[e :U 105 ]
+"60
+[; ;switch.c: 60:             avg_current_temperatuer = 0;
+[e = _avg_current_temperatuer -> -> 0 `i `us ]
+"61
+[; ;switch.c: 61:         }
+}
+[e :U 103 ]
+"64
+[; ;switch.c: 64:     }
+}
+[e :U 102 ]
+"66
+[; ;switch.c: 66: }
 [e :UE 96 ]
 }
-"16
-[; ;switch.c: 16: u8 switch_u8_get_state (void) {
+"68
+[; ;switch.c: 68: u8 switch_u8_get_state(void) {
 [v _switch_u8_get_state `(uc ~T0 @X0 1 ef ]
 {
 [e :U _switch_u8_get_state ]
 [f ]
-"18
-[; ;switch.c: 18: }
-[e :UE 97 ]
+"69
+[; ;switch.c: 69:     if (device_state == 4)
+[e $ ! == -> _device_state `i -> 4 `i 107  ]
+"70
+[; ;switch.c: 70:         return current_state;
+[e ) _current_state ]
+[e $UE 106  ]
+[e $U 108  ]
+"71
+[; ;switch.c: 71:     else
+[e :U 107 ]
+"72
+[; ;switch.c: 72:         return device_state;
+[e ) _device_state ]
+[e $UE 106  ]
+[e :U 108 ]
+"73
+[; ;switch.c: 73: }
+[e :UE 106 ]
 }

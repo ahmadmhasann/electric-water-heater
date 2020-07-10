@@ -23,27 +23,27 @@ u8 ssdState = SSD_ON;
 
 void ssd_vid_init(void) {
     dio_vid_set_port_direction(SSD_PORT, 0);
-    dio_vid_set_pin_direction(SSD_ENABLE_1_PORT, SSD_ENABLE_1_PIN, 0);
-    dio_vid_set_pin_direction(SSD_ENABLE_2_PORT, SSD_ENABLE_2_PIN, 0);
+    dio_vid_set_pin_direction(SSD_ENABLE_3_PORT, SSD_ENABLE_3_PIN, 0);
+    dio_vid_set_pin_direction(SSD_ENABLE_4_PORT, SSD_ENABLE_4_PIN, 0);
 }
 
 void ssd_vid_update() {
     if (ssdState == SSD_OFF) {
         /*Turn off SSD if status is off*/
-        dio_vid_set_pin_value(SSD_ENABLE_1_PORT, SSD_ENABLE_1_PIN, SSD_OFF);
-        dio_vid_set_pin_value(SSD_ENABLE_2_PORT, SSD_ENABLE_2_PIN, SSD_OFF);
+        dio_vid_set_pin_value(SSD_ENABLE_3_PORT, SSD_ENABLE_3_PIN, SSD_OFF);
+        dio_vid_set_pin_value(SSD_ENABLE_4_PORT, SSD_ENABLE_4_PIN, SSD_OFF);
         return;
     }
     u8 ones = ssdSymbol % 10;
     u8 tens = ssdSymbol / 10;
     /*toggle ssd 1, 2 status to print 2 digits*/
-    if (dio_u8_read_pin_value(SSD_ENABLE_2_PORT, SSD_ENABLE_2_PIN) == SSD_ON) {
-        dio_vid_set_pin_value(SSD_ENABLE_2_PORT, SSD_ENABLE_2_PIN, SSD_OFF);
-        dio_vid_set_pin_value(SSD_ENABLE_1_PORT, SSD_ENABLE_1_PIN, SSD_ON);
+    if (dio_u8_read_pin_value(SSD_ENABLE_4_PORT, SSD_ENABLE_4_PIN) == SSD_ON) {
+        dio_vid_set_pin_value(SSD_ENABLE_4_PORT, SSD_ENABLE_4_PIN, SSD_OFF);
+        dio_vid_set_pin_value(SSD_ENABLE_3_PORT, SSD_ENABLE_3_PIN, SSD_ON);
         dio_vid_set_port_value(SSD_PORT, ssd_u8_get_code(tens));
     } else {
-        dio_vid_set_pin_value(SSD_ENABLE_1_PORT, SSD_ENABLE_1_PIN, SSD_OFF);
-        dio_vid_set_pin_value(SSD_ENABLE_2_PORT, SSD_ENABLE_2_PIN, SSD_ON);
+        dio_vid_set_pin_value(SSD_ENABLE_3_PORT, SSD_ENABLE_3_PIN, SSD_OFF);
+        dio_vid_set_pin_value(SSD_ENABLE_4_PORT, SSD_ENABLE_4_PIN, SSD_ON);
         dio_vid_set_port_value(SSD_PORT, ssd_u8_get_code(ones));
     }
 }

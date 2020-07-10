@@ -15,54 +15,101 @@
 #include "ssd.h"
 #include "counter.h"
 #include "display.h"
+#include "switch.h"
 u8 displayFlag = 0xff;
 u8 settingModeFlag = 0;
 u16 settingModeCounter = 0;
+u8 state;
 
 void display_vid_init(void) {
+
     counter_vid_init();
-    
-    ssd_vid_set_state(SSD_ON);
-    ssd_vid_set_symbol(counter_u8_get_counter());
-    dio_vid_set_port_value(B, LOW_PORT);
-    
     ssd_vid_init();
+    switch_vid_init();
     
-    dio_vid_set_pin_direction(B, HEATER_ON_PIN, OUTPUT_PIN);
-    dio_vid_set_pin_direction(B, COOLER_ON_PIN, OUTPUT_PIN);
-    dio_vid_set_pin_direction(B, DEVICE_STATE_PIN, OUTPUT_PIN);
-    dio_vid_set_pin_value(B, DEVICE_STATE_PIN, HIGH_PIN);
-    
-    
+    /*turn off all port b leds*/
+    dio_vid_set_pin_direction(B, 3, OUTPUT_PIN);
+    dio_vid_set_pin_direction(B, 4, OUTPUT_PIN);
+    dio_vid_set_pin_direction(B, 5, OUTPUT_PIN);
+    dio_vid_set_pin_direction(B, 6, OUTPUT_PIN);
+    dio_vid_set_pin_direction(B, 7, OUTPUT_PIN);
+    dio_vid_set_pin_value(B, 3, LOW_PIN);
+    dio_vid_set_pin_value(B, 4, LOW_PIN);
+    dio_vid_set_pin_value(B, 5, LOW_PIN);
+    dio_vid_set_pin_value(B, 6, LOW_PIN);
+    dio_vid_set_pin_value(B, 7, LOW_PIN);
 }
 
 void display_vid_update(void) {
-    /*Exit setting mode if 5 seconds passed without changing*/
-    if (settingModeCounter == 250 && settingModeFlag == 1) {
-        settingModeFlag = 0;
-        settingModeCounter = 0;
+
+    state = switch_u8_get_state();
+
+    if (state == DEVICE_OFF) {
+        dio_vid_set_pin_value(B, HEATER_ELEMENT_LED, LOW_PIN);
+        dio_vid_set_pin_value(B, DEVICE_ON_LED, LOW_PIN);
+        ssd_vid_set_state(SSD_OFF);
+        dio_vid_set_pin_value(HEATER_PORT_ENABLE, HEATER_PIN_ENABLE, LOW_PIN);
+        dio_vid_set_pin_value(COOlER_PORT_ENABLE, COOlER_PIN_ENABLE, LOW_PIN);
+
+    } else {
+        dio_vid_set_pin_value(B, DEVICE_ON_LED, HIGH_PIN);
+        /*Exit setting mode if 5 seconds passed without changing*/
+        if (settingModeCounter == 250 && settingModeFlag == 1) {
+            settingModeFlag = 0;
+            settingModeCounter = 0;
+        }
+
+        if (settingModeFlag == DEVICE_SETTING_MODE_ON) {
+            settingModeCounter++;
+            /*Turn off cooling and heating elements in setting mode*/
+            dio_vid_set_pin_value(HEATER_PORT_ENABLE, HEATER_PIN_ENABLE, LOW_PIN);
+            dio_vid_set_pin_value(COOlER_PORT_ENABLE, COOlER_PIN_ENABLE, LOW_PIN);
+            /*Turn off cooling and heating leds in setting mode*/
+            /*blink ssd every 1 second*/
+            if (settingModeCounter % 50 == 0) {
+                if (ssd_u8_get_state() == SSD_ON)
+                    ssd_vid_set_state(SSD_OFF);
+                else
+                    ssd_vid_set_state(SSD_ON);
+            }
+        }            /*SSD doesn't blink if setting mode is off*/
+        else {
+            ssd_vid_set_state(SSD_ON);
+            /*turning on cooling or heating element and led based on current state*/
+            if (state == HEATER_ON) {
+                dio_vid_set_pin_value(HEATER_PORT_ENABLE, HEATER_PIN_ENABLE, HIGH_PIN);
+                dio_vid_set_pin_value(COOlER_PORT_ENABLE, COOlER_PIN_ENABLE, LOW_PIN);
+            } else if (state == COOLER_ON) {
+                dio_vid_set_pin_value(HEATER_PORT_ENABLE, HEATER_PIN_ENABLE, LOW_PIN);
+                dio_vid_set_pin_value(COOlER_PORT_ENABLE, COOlER_PIN_ENABLE, HIGH_PIN);
+            }
+        }
+
+        /*Update SSD symbol to last counter*/
+        ssd_vid_set_symbol(counter_u8_get_counter());
     }
 
-    /*Increment the counter and blink every second if setting mode is on*/
-    if (settingModeFlag) {
-        settingModeCounter++;
-        if (settingModeCounter % 50 == 0) {
-            if (ssd_u8_get_state() == SSD_ON)
-                ssd_vid_set_state(SSD_OFF);
-            else
-                ssd_vid_set_state(SSD_ON);
-        }
-    }
-    /*SSD doesn't blink if setting mode is off*/
-    else {
-        ssd_vid_set_state(SSD_ON);
-    }
-    
-    /*Update SSD symbol to last counter*/
-    ssd_vid_set_symbol(counter_u8_get_counter());
 }
 
-void display_set_setting_mode (u8 mode) {
+void display_vid_set_setting_mode_status(u8 mode) {
     settingModeFlag = mode;
     settingModeCounter = 0;
+}
+
+u8 display_u8_get_setting_mode_status(void) {
+    return settingModeFlag;
+}
+
+void display_vid_blink_heating_led(void) {
+    if (state == HEATER_ON) {
+        if (dio_u8_read_pin_value(B, HEATER_ELEMENT_LED) == HIGH_PIN)
+            dio_vid_set_pin_value(B, HEATER_ELEMENT_LED, LOW_PIN);
+        else
+            dio_vid_set_pin_value(B, HEATER_ELEMENT_LED, HIGH_PIN);
+    } else if (state == COOLER_ON) {
+        dio_vid_set_pin_value(B, HEATER_ELEMENT_LED, HIGH_PIN);
+
+    } else {
+        dio_vid_set_pin_value(B, HEATER_ELEMENT_LED, LOW_PIN);
+    }
 }

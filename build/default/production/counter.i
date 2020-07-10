@@ -1788,11 +1788,13 @@ u8 eeprom_external_vid_read(u8 address);
 # 16 "counter.c" 2
 
 # 1 "./display.h" 1
-# 17 "./display.h"
+# 16 "./display.h"
 extern u8 displayFlag;
-void display_init (void);
+void display_vid_init (void);
 void display_vid_update (void);
-void display_set_setting_mode (u8 mode);
+void display_vid_set_setting_mode_status (u8 mode);
+u8 display_u8_get_setting_mode_status (void);
+void display_vid_blink_heating_led(void);
 # 17 "counter.c" 2
 
 
@@ -1800,9 +1802,7 @@ void display_set_setting_mode (u8 mode);
 
 u8 buttonPressedFlag = 0;
 u8 settingModeFlag = 0;
-u16 settingModeCounter = 0;
 u8 counter = 60;
-
 void counter_vid_init(void) {
     dio_vid_set_pin_direction(B, 2, 0x01);
     dio_vid_set_pin_direction(B, 1, 0x01);
@@ -1814,7 +1814,7 @@ void counter_vid_init(void) {
 
 void counter_vid_update(void) {
     if (dio_u8_read_pin_value(B, 2) == 0 && buttonPressedFlag == 0) {
-        display_set_setting_mode(1);
+        display_vid_set_setting_mode_status(1);
         buttonPressedFlag = 1;
         if (counter + 5 < 80) {
             eeprom_external_vid_write(0, counter + 5);
@@ -1823,7 +1823,7 @@ void counter_vid_update(void) {
         }
     }
     else if (dio_u8_read_pin_value(B, 1) == 0 && buttonPressedFlag == 0) {
-        display_set_setting_mode(1);
+        display_vid_set_setting_mode_status(1);
         buttonPressedFlag = 1;
         if (counter - 5 > 30) {
             eeprom_external_vid_write(0, counter - 5);

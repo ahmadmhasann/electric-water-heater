@@ -1772,13 +1772,11 @@ typedef struct data {
 } sTask;
 
 void sch_vid_dispatch_tasks(void);
-
 u8 sch_u8_add_task(void ( * pFunction)(),
         const u64 DELAY,
         const u64 PERIOD);
-void timerInit(void);
 void sch_vid_init(void);
-u8 sch_vid_delete_task(u8 index);
+void sch_vid_delete_task(u8 index);
 void SCH_Report_Status(void);
 void SCH_Go_To_Sleep(void);
 void sch_update(void);
@@ -1793,11 +1791,11 @@ void timer_vid_set_isr_2(void (*callback_function) (void));
 # 15 "scheduler.c" 2
 
 
-sTask sch_tasks[3];
+sTask sch_tasks[5];
 
 void sch_vid_init(void) {
     u8 i;
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 5; i++) {
         sch_vid_delete_task(i);
     }
     timer_vid_set_isr_0(sch_update);
@@ -1807,7 +1805,7 @@ void sch_vid_init(void) {
 
 void sch_update(void) {
     u8 index;
-    for (index = 0; index < 3; index++) {
+    for (index = 0; index < 5; index++) {
 
         if (sch_tasks[index].taskFunction) {
             if (sch_tasks[index].delay == 0) {
@@ -1831,14 +1829,14 @@ u8 sch_u8_add_task(void ( * taskFunction)(),
     u8 index = 0;
 
 
-    while ((sch_tasks[index].taskFunction != 0) && (index < 3)) {
+    while ((sch_tasks[index].taskFunction != 0) && (index < 5)) {
         index++;
     }
 
 
-    if (index == 3) {
+    if (index == 5) {
 
-        return 3;
+        return 5;
     }
 
 
@@ -1852,7 +1850,7 @@ u8 sch_u8_add_task(void ( * taskFunction)(),
 void sch_vid_dispatch_tasks(void) {
     u8 index;
 
-    for (index = 0; index < 3; index++) {
+    for (index = 0; index < 5; index++) {
         if (sch_tasks[index].runMe > 0) {
             (*sch_tasks[index].taskFunction)();
             sch_tasks[index].runMe -= 1;
@@ -1865,8 +1863,8 @@ void sch_vid_dispatch_tasks(void) {
     }
 }
 
-u8 sch_vid_delete_task(u8 index) {
-    if (index < 3) {
+void sch_vid_delete_task(u8 index) {
+    if (index < 5) {
         sch_tasks[index].taskFunction = 0x0000;
         sch_tasks[index].delay = 0;
         sch_tasks[index].period = 0;

@@ -10,7 +10,7 @@
 #define	SCHEDULER_H
 
 #include <xc.h>   
-#define SCH_MAX_TASKS 3
+#define SCH_MAX_TASKS 5
 
 typedef struct data {
     /*Pointer to the task (must be a 'void (void)' function)*/
@@ -24,13 +24,11 @@ typedef struct data {
 } sTask;
 
 void sch_vid_dispatch_tasks(void);
-
 u8 sch_u8_add_task(void ( * pFunction)(),
         const u64 DELAY,
         const u64 PERIOD);
-void timerInit(void);
 void sch_vid_init(void);
-u8 sch_vid_delete_task(u8 index);
+void sch_vid_delete_task(u8 index);
 void SCH_Report_Status(void);
 void SCH_Go_To_Sleep(void);
 void sch_update(void);

@@ -239,11 +239,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ssd.c: 25:     dio_vid_set_port_direction(D, 0);
 [e ( _dio_vid_set_port_direction (2 , -> . `E860 3 `uc -> -> 0 `i `uc ]
 "26
-[; ;ssd.c: 26:     dio_vid_set_pin_direction(A, 2, 0);
-[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 0 `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 26:     dio_vid_set_pin_direction(A, 4, 0);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 0 `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
 "27
-[; ;ssd.c: 27:     dio_vid_set_pin_direction(A, 3, 0);
-[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 0 `uc -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 27:     dio_vid_set_pin_direction(A, 5, 0);
+[e ( _dio_vid_set_pin_direction (3 , , -> . `E860 0 `uc -> -> 5 `i `uc -> -> 0 `i `uc ]
 "28
 [; ;ssd.c: 28: }
 [e :UE 95 ]
@@ -259,11 +259,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> _ssdState `i -> 0 `i 97  ]
 {
 "33
-[; ;ssd.c: 33:         dio_vid_set_pin_value(A, 2, 0);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 33:         dio_vid_set_pin_value(A, 4, 0);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
 "34
-[; ;ssd.c: 34:         dio_vid_set_pin_value(A, 3, 0);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 34:         dio_vid_set_pin_value(A, 5, 0);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 5 `i `uc -> -> 0 `i `uc ]
 "35
 [; ;ssd.c: 35:         return;
 [e $UE 96  ]
@@ -280,15 +280,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _tens `uc ~T0 @X0 1 a ]
 [e = _tens -> / -> _ssdSymbol `ui -> -> 10 `i `ui `uc ]
 "40
-[; ;ssd.c: 40:     if (dio_u8_read_pin_value(A, 3) == 1) {
-[e $ ! == -> ( _dio_u8_read_pin_value (2 , -> . `E860 0 `uc -> -> 3 `i `uc `i -> 1 `i 98  ]
+[; ;ssd.c: 40:     if (dio_u8_read_pin_value(A, 5) == 1) {
+[e $ ! == -> ( _dio_u8_read_pin_value (2 , -> . `E860 0 `uc -> -> 5 `i `uc `i -> 1 `i 98  ]
 {
 "41
-[; ;ssd.c: 41:         dio_vid_set_pin_value(A, 3, 0);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 3 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 41:         dio_vid_set_pin_value(A, 5, 0);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 5 `i `uc -> -> 0 `i `uc ]
 "42
-[; ;ssd.c: 42:         dio_vid_set_pin_value(A, 2, 1);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;ssd.c: 42:         dio_vid_set_pin_value(A, 4, 1);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
 "43
 [; ;ssd.c: 43:         dio_vid_set_port_value(D, ssd_u8_get_code(tens));
 [e ( _dio_vid_set_port_value (2 , -> . `E860 3 `uc ( _ssd_u8_get_code (1 _tens ]
@@ -299,11 +299,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 98 ]
 {
 "45
-[; ;ssd.c: 45:         dio_vid_set_pin_value(A, 2, 0);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 2 `i `uc -> -> 0 `i `uc ]
+[; ;ssd.c: 45:         dio_vid_set_pin_value(A, 4, 0);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
 "46
-[; ;ssd.c: 46:         dio_vid_set_pin_value(A, 3, 1);
-[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 3 `i `uc -> -> 1 `i `uc ]
+[; ;ssd.c: 46:         dio_vid_set_pin_value(A, 5, 1);
+[e ( _dio_vid_set_pin_value (3 , , -> . `E860 0 `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
 "47
 [; ;ssd.c: 47:         dio_vid_set_port_value(D, ssd_u8_get_code(ones));
 [e ( _dio_vid_set_port_value (2 , -> . `E860 3 `uc ( _ssd_u8_get_code (1 _ones ]

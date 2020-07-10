@@ -1792,11 +1792,13 @@ u8 counter_u8_get_counter (void);
 # 16 "ssd.c" 2
 
 # 1 "./display.h" 1
-# 17 "./display.h"
+# 16 "./display.h"
 extern u8 displayFlag;
-void display_init (void);
+void display_vid_init (void);
 void display_vid_update (void);
-void display_set_setting_mode (u8 mode);
+void display_vid_set_setting_mode_status (u8 mode);
+u8 display_u8_get_setting_mode_status (void);
+void display_vid_blink_heating_led(void);
 # 17 "ssd.c" 2
 
 
@@ -1807,27 +1809,27 @@ u8 ssdState = 1;
 
 void ssd_vid_init(void) {
     dio_vid_set_port_direction(D, 0);
-    dio_vid_set_pin_direction(A, 2, 0);
-    dio_vid_set_pin_direction(A, 3, 0);
+    dio_vid_set_pin_direction(A, 4, 0);
+    dio_vid_set_pin_direction(A, 5, 0);
 }
 
 void ssd_vid_update() {
     if (ssdState == 0) {
 
-        dio_vid_set_pin_value(A, 2, 0);
-        dio_vid_set_pin_value(A, 3, 0);
+        dio_vid_set_pin_value(A, 4, 0);
+        dio_vid_set_pin_value(A, 5, 0);
         return;
     }
     u8 ones = ssdSymbol % 10;
     u8 tens = ssdSymbol / 10;
 
-    if (dio_u8_read_pin_value(A, 3) == 1) {
-        dio_vid_set_pin_value(A, 3, 0);
-        dio_vid_set_pin_value(A, 2, 1);
+    if (dio_u8_read_pin_value(A, 5) == 1) {
+        dio_vid_set_pin_value(A, 5, 0);
+        dio_vid_set_pin_value(A, 4, 1);
         dio_vid_set_port_value(D, ssd_u8_get_code(tens));
     } else {
-        dio_vid_set_pin_value(A, 2, 0);
-        dio_vid_set_pin_value(A, 3, 1);
+        dio_vid_set_pin_value(A, 4, 0);
+        dio_vid_set_pin_value(A, 5, 1);
         dio_vid_set_port_value(D, ssd_u8_get_code(ones));
     }
 }

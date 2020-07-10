@@ -4,25 +4,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./scheduler.h: 15: typedef struct data {
 [s S95 `*F887 1 `uo 1 `uo 1 `uo 1 ]
 [n S95 data taskFunction delay period runMe ]
-"33
-[; ;./scheduler.h: 33: u8 sch_vid_delete_task(u8 index);
-[v _sch_vid_delete_task `(uc ~T0 @X0 0 ef1`uc ]
-[v F910 `(v ~T0 @X0 0 tf ]
+"31
+[; ;./scheduler.h: 31: void sch_vid_delete_task(u8 index);
+[v _sch_vid_delete_task `(v ~T0 @X0 0 ef1`uc ]
+[v F909 `(v ~T0 @X0 0 tf ]
 "13 ./timer.h
 [; ;./timer.h: 13: void timer_vid_set_isr_0(void (*callback_function) (void));
-[v _timer_vid_set_isr_0 `(v ~T0 @X0 0 ef1`*F910 ]
-"36 ./scheduler.h
-[; ;./scheduler.h: 36: void sch_update(void);
+[v _timer_vid_set_isr_0 `(v ~T0 @X0 0 ef1`*F909 ]
+"34 ./scheduler.h
+[; ;./scheduler.h: 34: void sch_update(void);
 [v _sch_update `(v ~T0 @X0 0 ef ]
 "12 ./timer.h
 [; ;./timer.h: 12: void timer_vid_init_0(u16 prescaler, u8 interruptEnable);
 [v _timer_vid_init_0 `(v ~T0 @X0 0 ef2`us`uc ]
-[v F929 `(v ~T0 @X0 0 tf ]
-[v F931 `(v ~T0 @X0 0 t? ]
-[v F933 `(v ~T0 @X0 0 t? ]
-[v F938 `(v ~T0 @X0 0 tf ]
-[v F940 `(v ~T0 @X0 0 tf ]
-[v F948 `(v ~T0 @X0 0 tf ]
+[v F928 `(v ~T0 @X0 0 tf ]
+[v F930 `(v ~T0 @X0 0 t? ]
+[v F932 `(v ~T0 @X0 0 t? ]
+[v F937 `(v ~T0 @X0 0 tf ]
+[v F939 `(v ~T0 @X0 0 tf ]
+[v F947 `(v ~T0 @X0 0 tf ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -204,8 +204,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "17 scheduler.c
-[; ;scheduler.c: 17: sTask sch_tasks[3];
-[v _sch_tasks `S95 ~T0 @X0 -> 3 `i e ]
+[; ;scheduler.c: 17: sTask sch_tasks[5];
+[v _sch_tasks `S95 ~T0 @X0 -> 5 `i e ]
 "19
 [; ;scheduler.c: 19: void sch_vid_init(void) {
 [v _sch_vid_init `(v ~T0 @X0 1 ef ]
@@ -216,10 +216,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 20:     u8 i;
 [v _i `uc ~T0 @X0 1 a ]
 "21
-[; ;scheduler.c: 21:     for (i = 0; i < 3; i++) {
+[; ;scheduler.c: 21:     for (i = 0; i < 5; i++) {
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 97  ]
+[e $ < -> _i `i -> 5 `i 97  ]
 [e $U 98  ]
 [e :U 97 ]
 {
@@ -230,7 +230,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 23:     }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 97  ]
+[e $ < -> _i `i -> 5 `i 97  ]
 [e :U 98 ]
 }
 "24
@@ -253,16 +253,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 30:     u8 index;
 [v _index `uc ~T0 @X0 1 a ]
 "31
-[; ;scheduler.c: 31:     for (index = 0; index < 3; index++) {
+[; ;scheduler.c: 31:     for (index = 0; index < 5; index++) {
 {
 [e = _index -> -> 0 `i `uc ]
-[e $ < -> _index `i -> 3 `i 101  ]
+[e $ < -> _index `i -> 5 `i 101  ]
 [e $U 102  ]
 [e :U 101 ]
 {
 "33
 [; ;scheduler.c: 33:         if (sch_tasks[index].taskFunction) {
-[e $ ! != . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F929 104  ]
+[e $ ! != . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F928 104  ]
 {
 "34
 [; ;scheduler.c: 34:             if (sch_tasks[index].delay == 0) {
@@ -303,7 +303,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 46:     }
 }
 [e ++ _index -> -> 1 `i `uc ]
-[e $ < -> _index `i -> 3 `i 101  ]
+[e $ < -> _index `i -> 5 `i 101  ]
 [e :U 102 ]
 }
 "47
@@ -312,14 +312,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "49
 [; ;scheduler.c: 49: u8 sch_u8_add_task(void ( * taskFunction)(),
-[v _sch_u8_add_task `(uc ~T0 @X0 1 ef3`*F931`Cuo`Cuo ]
+[v _sch_u8_add_task `(uc ~T0 @X0 1 ef3`*F930`Cuo`Cuo ]
 "51
 [; ;scheduler.c: 51:         const u64 period) {
 {
 [e :U _sch_u8_add_task ]
 "49
 [; ;scheduler.c: 49: u8 sch_u8_add_task(void ( * taskFunction)(),
-[v _taskFunction `*F933 ~T0 @X0 1 r1 ]
+[v _taskFunction `*F932 ~T0 @X0 1 r1 ]
 "50
 [; ;scheduler.c: 50:         const u64 delay,
 [v _delay `Cuo ~T0 @X0 1 r2 ]
@@ -332,7 +332,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _index `uc ~T0 @X0 1 a ]
 [e = _index -> -> 0 `i `uc ]
 "55
-[; ;scheduler.c: 55:     while ((sch_tasks[index].taskFunction != 0) && (index < 3)) {
+[; ;scheduler.c: 55:     while ((sch_tasks[index].taskFunction != 0) && (index < 5)) {
 [e $U 109  ]
 [e :U 110 ]
 {
@@ -344,16 +344,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 109 ]
 "55
-[; ;scheduler.c: 55:     while ((sch_tasks[index].taskFunction != 0) && (index < 3)) {
-[e $ && != . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F938 < -> _index `i -> 3 `i 110  ]
+[; ;scheduler.c: 55:     while ((sch_tasks[index].taskFunction != 0) && (index < 5)) {
+[e $ && != . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F937 < -> _index `i -> 5 `i 110  ]
 [e :U 111 ]
 "60
-[; ;scheduler.c: 60:     if (index == 3) {
-[e $ ! == -> _index `i -> 3 `i 112  ]
+[; ;scheduler.c: 60:     if (index == 5) {
+[e $ ! == -> _index `i -> 5 `i 112  ]
 {
 "62
-[; ;scheduler.c: 62:         return 3;
-[e ) -> -> 3 `i `uc ]
+[; ;scheduler.c: 62:         return 5;
+[e ) -> -> 5 `i `uc ]
 [e $UE 108  ]
 "63
 [; ;scheduler.c: 63:     }
@@ -361,7 +361,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 112 ]
 "66
 [; ;scheduler.c: 66:     sch_tasks[index].taskFunction = taskFunction;
-[e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> _taskFunction `*F940 ]
+[e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> _taskFunction `*F939 ]
 "67
 [; ;scheduler.c: 67:     sch_tasks[index].delay = delay;
 [e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 1 _delay ]
@@ -389,10 +389,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 74:     u8 index;
 [v _index `uc ~T0 @X0 1 a ]
 "76
-[; ;scheduler.c: 76:     for (index = 0; index < 3; index++) {
+[; ;scheduler.c: 76:     for (index = 0; index < 5; index++) {
 {
 [e = _index -> -> 0 `i `uc ]
-[e $ < -> _index `i -> 3 `i 114  ]
+[e $ < -> _index `i -> 5 `i 114  ]
 [e $U 115  ]
 [e :U 114 ]
 {
@@ -425,7 +425,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;scheduler.c: 86:     }
 }
 [e ++ _index -> -> 1 `i `uc ]
-[e $ < -> _index `i -> 3 `i 114  ]
+[e $ < -> _index `i -> 5 `i 114  ]
 [e :U 115 ]
 }
 "87
@@ -433,19 +433,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 113 ]
 }
 "89
-[; ;scheduler.c: 89: u8 sch_vid_delete_task(u8 index) {
-[v _sch_vid_delete_task `(uc ~T0 @X0 1 ef1`uc ]
+[; ;scheduler.c: 89: void sch_vid_delete_task(u8 index) {
+[v _sch_vid_delete_task `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _sch_vid_delete_task ]
 [v _index `uc ~T0 @X0 1 r1 ]
 [f ]
 "90
-[; ;scheduler.c: 90:     if (index < 3) {
-[e $ ! < -> _index `i -> 3 `i 120  ]
+[; ;scheduler.c: 90:     if (index < 5) {
+[e $ ! < -> _index `i -> 5 `i 120  ]
 {
 "91
 [; ;scheduler.c: 91:         sch_tasks[index].taskFunction = 0x0000;
-[e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F948 ]
+[e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 0 -> -> 0 `i `*F947 ]
 "92
 [; ;scheduler.c: 92:         sch_tasks[index].delay = 0;
 [e = . *U + &U _sch_tasks * -> _index `ux -> -> # *U &U _sch_tasks `ui `ux 1 -> -> -> 0 `i `o `uo ]

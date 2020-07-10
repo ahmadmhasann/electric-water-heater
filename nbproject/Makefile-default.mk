@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=counter.c dio.c display.c eeprom_external.c i2c.c main.c scheduler.c ssd.c timer.c switch.c adc.c pwm.c
+SOURCEFILES_QUOTED_IF_SPACED=counter.c dio.c display.c eeprom_external.c i2c.c main.c scheduler.c ssd.c timer.c switch.c adc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/counter.p1 ${OBJECTDIR}/dio.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/eeprom_external.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/ssd.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/switch.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/pwm.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/counter.p1.d ${OBJECTDIR}/dio.p1.d ${OBJECTDIR}/display.p1.d ${OBJECTDIR}/eeprom_external.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/scheduler.p1.d ${OBJECTDIR}/ssd.p1.d ${OBJECTDIR}/timer.p1.d ${OBJECTDIR}/switch.p1.d ${OBJECTDIR}/adc.p1.d ${OBJECTDIR}/pwm.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/counter.p1 ${OBJECTDIR}/dio.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/eeprom_external.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/ssd.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/switch.p1 ${OBJECTDIR}/adc.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/counter.p1.d ${OBJECTDIR}/dio.p1.d ${OBJECTDIR}/display.p1.d ${OBJECTDIR}/eeprom_external.p1.d ${OBJECTDIR}/i2c.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/scheduler.p1.d ${OBJECTDIR}/ssd.p1.d ${OBJECTDIR}/timer.p1.d ${OBJECTDIR}/switch.p1.d ${OBJECTDIR}/adc.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/counter.p1 ${OBJECTDIR}/dio.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/eeprom_external.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/ssd.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/switch.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/pwm.p1
+OBJECTFILES=${OBJECTDIR}/counter.p1 ${OBJECTDIR}/dio.p1 ${OBJECTDIR}/display.p1 ${OBJECTDIR}/eeprom_external.p1 ${OBJECTDIR}/i2c.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/scheduler.p1 ${OBJECTDIR}/ssd.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/switch.p1 ${OBJECTDIR}/adc.p1
 
 # Source Files
-SOURCEFILES=counter.c dio.c display.c eeprom_external.c i2c.c main.c scheduler.c ssd.c timer.c switch.c adc.c pwm.c
+SOURCEFILES=counter.c dio.c display.c eeprom_external.c i2c.c main.c scheduler.c ssd.c timer.c switch.c adc.c
 
 
 
@@ -182,14 +182,6 @@ ${OBJECTDIR}/adc.p1: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/adc.d ${OBJECTDIR}/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/pwm.p1: pwm.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pwm.p1.d 
-	@${RM} ${OBJECTDIR}/pwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/pwm.p1 pwm.c 
-	@-${MV} ${OBJECTDIR}/pwm.d ${OBJECTDIR}/pwm.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
 ${OBJECTDIR}/counter.p1: counter.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -278,14 +270,6 @@ ${OBJECTDIR}/adc.p1: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/adc.p1 adc.c 
 	@-${MV} ${OBJECTDIR}/adc.d ${OBJECTDIR}/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/pwm.p1: pwm.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/pwm.p1.d 
-	@${RM} ${OBJECTDIR}/pwm.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/pwm.p1 pwm.c 
-	@-${MV} ${OBJECTDIR}/pwm.d ${OBJECTDIR}/pwm.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

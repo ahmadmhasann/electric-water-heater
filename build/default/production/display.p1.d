@@ -6,4 +6,5 @@ macros.h  \
 dio.h  \
 ssd.h  \
 counter.h  \
-display.h 
+display.h  \
+switch.h 

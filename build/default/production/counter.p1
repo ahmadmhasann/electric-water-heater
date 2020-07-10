@@ -2,8 +2,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35 ./dio.h
 [; ;./dio.h: 35: void dio_vid_set_pin_direction (u8 portNumber, u8 index, u8 direction);
 [v _dio_vid_set_pin_direction `(v ~T0 @X0 0 ef3`uc`uc`uc ]
-"27 counter.c
-[; ;counter.c: 27:     dio_vid_set_pin_direction(B, 2, 0x01);
+"25 counter.c
+[; ;counter.c: 25:     dio_vid_set_pin_direction(B, 2, 0x01);
 [c E860 0 1 2 3 4 .. ]
 [n E860 . A B C D E  ]
 "14 ./eeprom_external.h
@@ -12,9 +12,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33 ./dio.h
 [; ;./dio.h: 33: u8 dio_u8_read_pin_value (u8 portNumber, u8 index);
 [v _dio_u8_read_pin_value `(uc ~T0 @X0 0 ef2`uc`uc ]
-"20 ./display.h
-[; ;./display.h: 20: void display_set_setting_mode (u8 mode);
-[v _display_set_setting_mode `(v ~T0 @X0 0 ef1`uc ]
+"19 ./display.h
+[; ;./display.h: 19: void display_vid_set_setting_mode_status (u8 mode);
+[v _display_vid_set_setting_mode_status `(v ~T0 @X0 0 ef1`uc ]
 "13 ./eeprom_external.h
 [; ;./eeprom_external.h: 13: void eeprom_external_vid_write(u8 address, u8 data);
 [v _eeprom_external_vid_write `(v ~T0 @X0 0 ef2`uc`uc ]
@@ -230,135 +230,129 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 "23
-[; ;counter.c: 23: u16 settingModeCounter = 0;
-[v _settingModeCounter `us ~T0 @X0 1 e ]
-[i _settingModeCounter
--> -> 0 `i `us
-]
-"24
-[; ;counter.c: 24: u8 counter = 60;
+[; ;counter.c: 23: u8 counter = 60;
 [v _counter `uc ~T0 @X0 1 e ]
 [i _counter
 -> -> 60 `i `uc
 ]
-"26
-[; ;counter.c: 26: void counter_vid_init(void) {
+"24
+[; ;counter.c: 24: void counter_vid_init(void) {
 [v _counter_vid_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _counter_vid_init ]
 [f ]
-"27
-[; ;counter.c: 27:     dio_vid_set_pin_direction(B, 2, 0x01);
+"25
+[; ;counter.c: 25:     dio_vid_set_pin_direction(B, 2, 0x01);
 [e ( _dio_vid_set_pin_direction (3 , , -> . `E860 1 `uc -> -> 2 `i `uc -> -> 1 `i `uc ]
-"28
-[; ;counter.c: 28:     dio_vid_set_pin_direction(B, 1, 0x01);
+"26
+[; ;counter.c: 26:     dio_vid_set_pin_direction(B, 1, 0x01);
 [e ( _dio_vid_set_pin_direction (3 , , -> . `E860 1 `uc -> -> 1 `i `uc -> -> 1 `i `uc ]
-"29
-[; ;counter.c: 29:     counter = eeprom_external_vid_read(0);
+"27
+[; ;counter.c: 27:     counter = eeprom_external_vid_read(0);
 [e = _counter ( _eeprom_external_vid_read (1 -> -> 0 `i `uc ]
-"30
-[; ;counter.c: 30:     if (counter < 35 || counter > 75 || counter % 5 != 0)
+"28
+[; ;counter.c: 28:     if (counter < 35 || counter > 75 || counter % 5 != 0)
 [e $ ! || || < -> _counter `i -> 35 `i > -> _counter `i -> 75 `i != % -> _counter `i -> 5 `i -> 0 `i 96  ]
-"31
-[; ;counter.c: 31:         counter = 60;
+"29
+[; ;counter.c: 29:         counter = 60;
 [e = _counter -> -> 60 `i `uc ]
 [e :U 96 ]
-"33
-[; ;counter.c: 33: }
+"31
+[; ;counter.c: 31: }
 [e :UE 95 ]
 }
-"35
-[; ;counter.c: 35: void counter_vid_update(void) {
+"33
+[; ;counter.c: 33: void counter_vid_update(void) {
 [v _counter_vid_update `(v ~T0 @X0 1 ef ]
 {
 [e :U _counter_vid_update ]
 [f ]
-"36
-[; ;counter.c: 36:     if (dio_u8_read_pin_value(B, 2) == 0 && buttonPressedFlag == 0) {
+"34
+[; ;counter.c: 34:     if (dio_u8_read_pin_value(B, 2) == 0 && buttonPressedFlag == 0) {
 [e $ ! && == -> ( _dio_u8_read_pin_value (2 , -> . `E860 1 `uc -> -> 2 `i `uc `i -> 0 `i == -> _buttonPressedFlag `i -> 0 `i 98  ]
 {
-"37
-[; ;counter.c: 37:         display_set_setting_mode(1);
-[e ( _display_set_setting_mode (1 -> -> 1 `i `uc ]
-"38
-[; ;counter.c: 38:         buttonPressedFlag = 1;
+"35
+[; ;counter.c: 35:         display_vid_set_setting_mode_status(1);
+[e ( _display_vid_set_setting_mode_status (1 -> -> 1 `i `uc ]
+"36
+[; ;counter.c: 36:         buttonPressedFlag = 1;
 [e = _buttonPressedFlag -> -> 1 `i `uc ]
-"39
-[; ;counter.c: 39:         if (counter + 5 < 80) {
+"37
+[; ;counter.c: 37:         if (counter + 5 < 80) {
 [e $ ! < + -> _counter `i -> 5 `i -> 80 `i 99  ]
 {
-"40
-[; ;counter.c: 40:             eeprom_external_vid_write(0, counter + 5);
+"38
+[; ;counter.c: 38:             eeprom_external_vid_write(0, counter + 5);
 [e ( _eeprom_external_vid_write (2 , -> -> 0 `i `uc -> + -> _counter `i -> 5 `i `uc ]
-"41
-[; ;counter.c: 41:             counter += 5;
+"39
+[; ;counter.c: 39:             counter += 5;
 [e =+ _counter -> -> 5 `i `uc ]
-"42
-[; ;counter.c: 42:             ssd_vid_set_symbol(counter);
+"40
+[; ;counter.c: 40:             ssd_vid_set_symbol(counter);
 [e ( _ssd_vid_set_symbol (1 _counter ]
-"43
-[; ;counter.c: 43:         }
+"41
+[; ;counter.c: 41:         }
 }
 [e :U 99 ]
-"44
-[; ;counter.c: 44:     }
+"42
+[; ;counter.c: 42:     }
 }
 [e $U 100  ]
-"45
-[; ;counter.c: 45:     else if (dio_u8_read_pin_value(B, 1) == 0 && buttonPressedFlag == 0) {
+"43
+[; ;counter.c: 43:     else if (dio_u8_read_pin_value(B, 1) == 0 && buttonPressedFlag == 0) {
 [e :U 98 ]
 [e $ ! && == -> ( _dio_u8_read_pin_value (2 , -> . `E860 1 `uc -> -> 1 `i `uc `i -> 0 `i == -> _buttonPressedFlag `i -> 0 `i 101  ]
 {
-"46
-[; ;counter.c: 46:         display_set_setting_mode(1);
-[e ( _display_set_setting_mode (1 -> -> 1 `i `uc ]
-"47
-[; ;counter.c: 47:         buttonPressedFlag = 1;
+"44
+[; ;counter.c: 44:         display_vid_set_setting_mode_status(1);
+[e ( _display_vid_set_setting_mode_status (1 -> -> 1 `i `uc ]
+"45
+[; ;counter.c: 45:         buttonPressedFlag = 1;
 [e = _buttonPressedFlag -> -> 1 `i `uc ]
-"48
-[; ;counter.c: 48:         if (counter - 5 > 30) {
+"46
+[; ;counter.c: 46:         if (counter - 5 > 30) {
 [e $ ! > - -> _counter `i -> 5 `i -> 30 `i 102  ]
 {
-"49
-[; ;counter.c: 49:             eeprom_external_vid_write(0, counter - 5);
+"47
+[; ;counter.c: 47:             eeprom_external_vid_write(0, counter - 5);
 [e ( _eeprom_external_vid_write (2 , -> -> 0 `i `uc -> - -> _counter `i -> 5 `i `uc ]
-"50
-[; ;counter.c: 50:             counter -= 5;
+"48
+[; ;counter.c: 48:             counter -= 5;
 [e =- _counter -> -> 5 `i `uc ]
-"51
-[; ;counter.c: 51:             ssd_vid_set_symbol(counter);
+"49
+[; ;counter.c: 49:             ssd_vid_set_symbol(counter);
 [e ( _ssd_vid_set_symbol (1 _counter ]
-"52
-[; ;counter.c: 52:         }
+"50
+[; ;counter.c: 50:         }
 }
 [e :U 102 ]
-"53
-[; ;counter.c: 53:     }
+"51
+[; ;counter.c: 51:     }
 }
 [e :U 101 ]
 [e :U 100 ]
-"54
-[; ;counter.c: 54:     if (dio_u8_read_pin_value(B, 2) && dio_u8_read_pin_value(B, 1))
+"52
+[; ;counter.c: 52:     if (dio_u8_read_pin_value(B, 2) && dio_u8_read_pin_value(B, 1))
 [e $ ! && != -> ( _dio_u8_read_pin_value (2 , -> . `E860 1 `uc -> -> 2 `i `uc `i -> 0 `i != -> ( _dio_u8_read_pin_value (2 , -> . `E860 1 `uc -> -> 1 `i `uc `i -> 0 `i 103  ]
-"55
-[; ;counter.c: 55:         buttonPressedFlag = 0;
+"53
+[; ;counter.c: 53:         buttonPressedFlag = 0;
 [e = _buttonPressedFlag -> -> 0 `i `uc ]
 [e :U 103 ]
-"57
-[; ;counter.c: 57: }
+"55
+[; ;counter.c: 55: }
 [e :UE 97 ]
 }
-"60
-[; ;counter.c: 60: u8 counter_u8_get_counter (void) {
+"58
+[; ;counter.c: 58: u8 counter_u8_get_counter (void) {
 [v _counter_u8_get_counter `(uc ~T0 @X0 1 ef ]
 {
 [e :U _counter_u8_get_counter ]
 [f ]
-"61
-[; ;counter.c: 61:     return counter;
+"59
+[; ;counter.c: 59:     return counter;
 [e ) _counter ]
 [e $UE 104  ]
-"62
-[; ;counter.c: 62: }
+"60
+[; ;counter.c: 60: }
 [e :UE 104 ]
 }

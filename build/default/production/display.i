@@ -1792,61 +1792,116 @@ u8 counter_u8_get_counter (void);
 # 16 "display.c" 2
 
 # 1 "./display.h" 1
-# 17 "./display.h"
+# 16 "./display.h"
 extern u8 displayFlag;
-void display_init (void);
+void display_vid_init (void);
 void display_vid_update (void);
-void display_set_setting_mode (u8 mode);
+void display_vid_set_setting_mode_status (u8 mode);
+u8 display_u8_get_setting_mode_status (void);
+void display_vid_blink_heating_led(void);
 # 17 "display.c" 2
+
+# 1 "./switch.h" 1
+# 21 "./switch.h"
+void switch_vid_init (void);
+void switch_vid_update (void);
+u8 switch_u8_get_state (void);
+# 18 "display.c" 2
 
 u8 displayFlag = 0xff;
 u8 settingModeFlag = 0;
 u16 settingModeCounter = 0;
+u8 state;
 
-void display_init(void) {
+void display_vid_init(void) {
+
     counter_vid_init();
-
-    ssd_vid_set_state(1);
-    ssd_vid_set_symbol(counter_u8_get_counter());
-    dio_vid_set_port_value(B, 0x00);
-
     ssd_vid_init();
+    switch_vid_init();
+
 
     dio_vid_set_pin_direction(B, 3, 0x00);
     dio_vid_set_pin_direction(B, 4, 0x00);
     dio_vid_set_pin_direction(B, 5, 0x00);
-    dio_vid_set_pin_value(B, 5, 0x01);
-
-
+    dio_vid_set_pin_direction(B, 6, 0x00);
+    dio_vid_set_pin_direction(B, 7, 0x00);
+    dio_vid_set_pin_value(B, 3, 0x00);
+    dio_vid_set_pin_value(B, 4, 0x00);
+    dio_vid_set_pin_value(B, 5, 0x00);
+    dio_vid_set_pin_value(B, 6, 0x00);
+    dio_vid_set_pin_value(B, 7, 0x00);
 }
 
 void display_vid_update(void) {
 
-    if (settingModeCounter == 250 && settingModeFlag == 1) {
-        settingModeFlag = 0;
-        settingModeCounter = 0;
-    }
+    state = switch_u8_get_state();
 
+    if (state == 3) {
+        dio_vid_set_pin_value(B, 6, 0x00);
+        dio_vid_set_pin_value(B, 7, 0x00);
+        ssd_vid_set_state(0);
+        dio_vid_set_pin_value(C, 5, 0x00);
+        dio_vid_set_pin_value(C, 2, 0x00);
 
-    if (settingModeFlag) {
-        settingModeCounter++;
-        if (settingModeCounter % 50 == 0) {
-            if (ssd_u8_get_state() == 1)
-                ssd_vid_set_state(0);
-            else
-                ssd_vid_set_state(1);
+    } else {
+        dio_vid_set_pin_value(B, 7, 0x01);
+
+        if (settingModeCounter == 250 && settingModeFlag == 1) {
+            settingModeFlag = 0;
+            settingModeCounter = 0;
         }
+
+        if (settingModeFlag == 1) {
+            settingModeCounter++;
+
+            dio_vid_set_pin_value(C, 5, 0x00);
+            dio_vid_set_pin_value(C, 2, 0x00);
+
+
+            if (settingModeCounter % 50 == 0) {
+                if (ssd_u8_get_state() == 1)
+                    ssd_vid_set_state(0);
+                else
+                    ssd_vid_set_state(1);
+            }
+        }
+        else {
+            ssd_vid_set_state(1);
+
+            if (state == 2) {
+                dio_vid_set_pin_value(C, 5, 0x01);
+                dio_vid_set_pin_value(C, 2, 0x00);
+            } else if (state == 1) {
+                dio_vid_set_pin_value(C, 5, 0x00);
+                dio_vid_set_pin_value(C, 2, 0x01);
+            }
+        }
+
+
+        ssd_vid_set_symbol(counter_u8_get_counter());
     }
 
-    else {
-        ssd_vid_set_state(1);
-    }
-
-
-    ssd_vid_set_symbol(counter_u8_get_counter());
 }
 
-void display_set_setting_mode (u8 mode) {
+void display_vid_set_setting_mode_status(u8 mode) {
     settingModeFlag = mode;
     settingModeCounter = 0;
+}
+
+u8 display_u8_get_setting_mode_status(void) {
+    return settingModeFlag;
+}
+
+void display_vid_blink_heating_led(void) {
+    if (state == 2) {
+        if (dio_u8_read_pin_value(B, 6) == 0x01)
+            dio_vid_set_pin_value(B, 6, 0x00);
+        else
+            dio_vid_set_pin_value(B, 6, 0x01);
+    } else if (state == 1) {
+        dio_vid_set_pin_value(B, 6, 0x01);
+
+    } else {
+        dio_vid_set_pin_value(B, 6, 0x00);
+    }
 }

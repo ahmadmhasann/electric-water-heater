@@ -1742,13 +1742,115 @@ typedef double f64;
 typedef long double f96;
 # 8 "switch.c" 2
 
+# 1 "./adc.h" 1
+# 12 "./adc.h"
+void adc_vid_init ();
+u16 adc_u8_get_value (u8 channel);
+# 9 "switch.c" 2
 
-void switch_vid_init (void) {
+# 1 "./counter.h" 1
+# 12 "./counter.h"
+extern u8 buttonPressedFlag;
+extern u8 settingModeFlag;
+extern u16 settingModeCounter;
+void counter_vid_init(void);
+void counter_vid_update(void);
+u8 counter_u8_get_counter (void);
+# 10 "switch.c" 2
+
+# 1 "./dio.h" 1
+# 10 "./dio.h"
+enum {
+ A,
+ B,
+ C,
+ D,
+    E
+};
+# 30 "./dio.h"
+void dio_vid_set_port_direction (u8 portNumber, u8 direction);
+void dio_vid_set_port_value (u8 portNumber, u8 value);
+u8 dio_u8_read_port_value (u8 portNumber);
+u8 dio_u8_read_pin_value (u8 portNumber, u8 index);
+void dio_vid_set_pin_value (u8 portNumber, u8 index, u8 value);
+void dio_vid_set_pin_direction (u8 portNumber, u8 index, u8 direction);
+# 11 "switch.c" 2
+
+# 1 "./ssd.h" 1
+# 30 "./ssd.h"
+void ssd_vid_init(void);
+void ssd_vid_update();
+u8 ssd_u8_get_symbol();
+void ssd_vid_set_symbol(u8 symbol);
+u8 ssd_u8_get_state(void);
+void ssd_vid_set_state(u8 state);
+u8 ssd_u8_get_code(u8 number);
+# 12 "switch.c" 2
+
+# 1 "./switch.h" 1
+# 21 "./switch.h"
+void switch_vid_init (void);
+void switch_vid_update (void);
+u8 switch_u8_get_state (void);
+# 13 "switch.c" 2
+
+u8 current_state = 4;
+u8 device_state = 4;
+u16 avg_current_temperatuer = 0;
+u8 readings_counter = 0;
+u8 onOffButtonFlag = 0;
+
+void switch_vid_init(void) {
+
+    dio_vid_set_pin_direction(C, 2, 0x00);
+    dio_vid_set_pin_direction(C, 5, 0x00);
+    adc_vid_init();
+    dio_vid_set_pin_direction(B, 0, 0x01);
 
 }
-void switch_vid_update (void) {
+
+void switch_vid_update(void) {
+
+    if (dio_u8_read_pin_value(B, 0) == 0 && onOffButtonFlag == 0) {
+        onOffButtonFlag = 1;
+        if (device_state == 3) {
+            device_state = 4;
+        } else if (device_state == 4) {
+            device_state = 3;
+        }
+    }
+    if (dio_u8_read_pin_value(B, 0) != 0) {
+        onOffButtonFlag = 0;
+    }
+    if (device_state == 4) {
+
+        u8 current_temperature = adc_u8_get_value(2) * 0.488;
+        readings_counter++;
+        avg_current_temperatuer += current_temperature;
+
+
+        if (readings_counter == 10) {
+
+            u8 set_temperature = counter_u8_get_counter();
+            readings_counter = 0;
+            avg_current_temperatuer /= 10;
+            if (set_temperature > avg_current_temperatuer + 5) {
+                current_state = 2;
+            }
+            if (avg_current_temperatuer > set_temperature + 5) {
+                current_state = 1;
+            }
+            avg_current_temperatuer = 0;
+        }
+
+
+    }
 
 }
-u8 switch_u8_get_state (void) {
 
+u8 switch_u8_get_state(void) {
+    if (device_state == 4)
+        return current_state;
+    else
+        return device_state;
 }

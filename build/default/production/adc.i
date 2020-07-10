@@ -14,6 +14,7 @@
 
 
 
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1727,5 +1728,62 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 8 "adc.c" 2
+# 9 "adc.c" 2
 
+# 1 "./types.h" 1
+# 10 "./types.h"
+typedef signed char s8;
+typedef unsigned char u8;
+typedef signed short int s16;
+typedef unsigned short int u16;
+typedef signed long int s32;
+typedef unsigned long int u32;
+typedef unsigned long long int u64;
+typedef float f32;
+typedef double f64;
+typedef long double f96;
+# 10 "adc.c" 2
+
+# 1 "./adc.h" 1
+# 12 "./adc.h"
+void adc_vid_init ();
+u16 adc_u8_get_value (u8 channel);
+# 11 "adc.c" 2
+
+
+void adc_vid_init () {
+
+
+    ADCS2 = 0;
+    ADCS1 = 0;
+    ADCS0 = 0;
+
+
+    ADFM = 1;
+}
+
+
+u16 adc_u8_get_value (u8 channel) {
+
+
+    ADON = 1;
+
+
+    ADCON0 &= 0b11000111;
+
+
+    ADCON0 |= channel<<3;
+    _delay((unsigned long)((1)*(8000000/4000.0)));
+
+
+    GO = 1;
+
+
+    while (GO_DONE == 1);
+
+
+    ADON = 0;
+
+
+    return((ADRESH<<8) + ADRESL);
+}

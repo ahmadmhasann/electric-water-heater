@@ -1,2 +1,4 @@
 build/default/production/adc.p1:  \
-adc.c 
+adc.c  \
+types.h  \
+adc.h 

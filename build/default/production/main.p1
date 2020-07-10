@@ -1,26 +1,34 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"18 ./display.h
-[; ;./display.h: 18: void display_init (void);
-[v _display_init `(v ~T0 @X0 0 ef ]
-"32 ./scheduler.h
-[; ;./scheduler.h: 32: void sch_vid_init(void);
+"17 ./display.h
+[; ;./display.h: 17: void display_vid_init (void);
+[v _display_vid_init `(v ~T0 @X0 0 ef ]
+"30 ./scheduler.h
+[; ;./scheduler.h: 30: void sch_vid_init(void);
 [v _sch_vid_init `(v ~T0 @X0 0 ef ]
-[v F904 `(v ~T0 @X0 0 t? ]
-"28
-[; ;./scheduler.h: 28: u8 sch_u8_add_task(void ( * pFunction)(),
-[v _sch_u8_add_task `(uc ~T0 @X0 0 ef3`*F904`Cuo`Cuo ]
+[v F879 `(v ~T0 @X0 0 t? ]
+"27
+[; ;./scheduler.h: 27: u8 sch_u8_add_task(void ( * pFunction)(),
+[v _sch_u8_add_task `(uc ~T0 @X0 0 ef3`*F879`Cuo`Cuo ]
+"22 ./switch.h
+[; ;./switch.h: 22: void switch_vid_update (void);
+[v _switch_vid_update `(v ~T0 @X0 0 ef ]
+[v F907 `(v ~T0 @X0 0 t? ]
 "16 ./counter.h
 [; ;./counter.h: 16: void counter_vid_update(void);
 [v _counter_vid_update `(v ~T0 @X0 0 ef ]
-[v F970 `(v ~T0 @X0 0 t? ]
-"19 ./display.h
-[; ;./display.h: 19: void display_vid_update (void);
+[v F909 `(v ~T0 @X0 0 t? ]
+"18 ./display.h
+[; ;./display.h: 18: void display_vid_update (void);
 [v _display_vid_update `(v ~T0 @X0 0 ef ]
-[v F972 `(v ~T0 @X0 0 t? ]
+[v F911 `(v ~T0 @X0 0 t? ]
 "31 ./ssd.h
 [; ;./ssd.h: 31: void ssd_vid_update();
 [v _ssd_vid_update `(v ~T0 @X0 0 e? ]
+"21 ./display.h
+[; ;./display.h: 21: void display_vid_blink_heating_led(void);
+[v _display_vid_blink_heating_led `(v ~T0 @X0 0 ef ]
+[v F914 `(v ~T0 @X0 0 t? ]
 "26 ./scheduler.h
 [; ;./scheduler.h: 26: void sch_vid_dispatch_tasks(void);
 [v _sch_vid_dispatch_tasks `(v ~T0 @X0 0 ef ]
@@ -221,41 +229,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [p x CP = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"24 main.c
-[; ;main.c: 24: int main(void) {
+"18 main.c
+[; ;main.c: 18: int main(void) {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"26
-[; ;main.c: 26:     display_init();
-[e ( _display_init ..  ]
-"27
-[; ;main.c: 27:     sch_vid_init();
+"20
+[; ;main.c: 20:     display_vid_init();
+[e ( _display_vid_init ..  ]
+"21
+[; ;main.c: 21:     sch_vid_init();
 [e ( _sch_vid_init ..  ]
-"28
-[; ;main.c: 28:     sch_u8_add_task(counter_vid_update, 20, 20);
-[e ( _sch_u8_add_task (3 , , -> &U _counter_vid_update `*F970 -> -> -> 20 `i `o `uo -> -> -> 20 `i `o `uo ]
+"23
+[; ;main.c: 23:     sch_u8_add_task(switch_vid_update, 20, 100);
+[e ( _sch_u8_add_task (3 , , -> &U _switch_vid_update `*F907 -> -> -> 20 `i `o `uo -> -> -> 100 `i `o `uo ]
+"24
+[; ;main.c: 24:     sch_u8_add_task(counter_vid_update, 20, 20);
+[e ( _sch_u8_add_task (3 , , -> &U _counter_vid_update `*F909 -> -> -> 20 `i `o `uo -> -> -> 20 `i `o `uo ]
+"25
+[; ;main.c: 25:     sch_u8_add_task(display_vid_update, 0, 20);
+[e ( _sch_u8_add_task (3 , , -> &U _display_vid_update `*F911 -> -> -> 0 `i `o `uo -> -> -> 20 `i `o `uo ]
+"26
+[; ;main.c: 26:     sch_u8_add_task(ssd_vid_update, 20, 5);
+[e ( _sch_u8_add_task (3 , , &U _ssd_vid_update -> -> -> 20 `i `o `uo -> -> -> 5 `i `o `uo ]
+"27
+[; ;main.c: 27:     sch_u8_add_task(display_vid_blink_heating_led, 1000, 1000);
+[e ( _sch_u8_add_task (3 , , -> &U _display_vid_blink_heating_led `*F914 -> -> -> 1000 `i `o `uo -> -> -> 1000 `i `o `uo ]
 "29
-[; ;main.c: 29:     sch_u8_add_task(display_vid_update, 0, 20);
-[e ( _sch_u8_add_task (3 , , -> &U _display_vid_update `*F972 -> -> -> 0 `i `o `uo -> -> -> 20 `i `o `uo ]
-"30
-[; ;main.c: 30:     sch_u8_add_task(ssd_vid_update, 5, 5);
-[e ( _sch_u8_add_task (3 , , &U _ssd_vid_update -> -> -> 5 `i `o `uo -> -> -> 5 `i `o `uo ]
-"32
-[; ;main.c: 32:     while (1) {
+[; ;main.c: 29:     while (1) {
 [e :U 98 ]
 {
-"33
-[; ;main.c: 33:         sch_vid_dispatch_tasks();
+"30
+[; ;main.c: 30:         sch_vid_dispatch_tasks();
 [e ( _sch_vid_dispatch_tasks ..  ]
-"34
-[; ;main.c: 34:     }
+"31
+[; ;main.c: 31:     }
 }
 [e :U 97 ]
 [e $U 98  ]
 [e :U 99 ]
-"36
-[; ;main.c: 36: }
+"33
+[; ;main.c: 33: }
 [e :UE 96 ]
 }
