@@ -10,7 +10,7 @@
 #include "types.h"
 #include "adc.h"
 
-void adc_vid_init () {
+void adc_vid_init (void) {
   
     /* A/D Conversion Clock FOSC/2*/
     ADCS2 = 0;

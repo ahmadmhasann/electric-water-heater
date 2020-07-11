@@ -47,8 +47,8 @@ void sch_update(void) {
 }
 
 u8 sch_u8_add_task(void ( * taskFunction)(),
-        const u64 delay,
-        const u64 period) {
+        const u32 delay,
+        const u32 period) {
     u8 index = 0;
     
     /*First find a gap in the array (if there is one)*/

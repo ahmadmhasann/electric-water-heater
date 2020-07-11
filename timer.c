@@ -11,8 +11,6 @@
 #include <xc.h>
 #include "types.h"
 #include "macros.h"
-#include "dio.h"
-#include "scheduler.h"
 #include "timer.h"
 void(*timer0_isr)(void);
 void(*timer1_isr)(void);

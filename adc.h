@@ -9,7 +9,7 @@
 #define	ADC_H_
 
 #define ADC_COMPLETED 1
-void adc_vid_init ();
+void adc_vid_init (void);
 u16 adc_u8_get_value (u8 channel);
 
 

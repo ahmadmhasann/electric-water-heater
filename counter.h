@@ -8,6 +8,8 @@
 
 #ifndef COUNTER_H
 #define	COUNTER_H
+#define UP_BUTTON 2
+#define DOWN_BUTTON 1
 
 extern u8 buttonPressedFlag;
 extern u8 settingModeFlag;
